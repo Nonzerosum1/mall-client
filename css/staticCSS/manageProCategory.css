@@ -1,0 +1,23 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+/*导航栏*****************/
+
+.clearfix{
+	background-color: #124fa0;
+	
+}
+
+.collapse{
+	color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}

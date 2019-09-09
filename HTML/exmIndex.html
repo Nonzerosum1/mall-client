@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页示例</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common/tools.js"></script>
+	<script src="../vue2517.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/titatoggle-dist-min.css">
+	<link rel="stylesheet" type="text/css" href="../css/awesome-bootstrap-checkbox.css"> -->
+
+	<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+	<!-- <link rel="stylesheet" href="https://at.alicdn.com/t/font_529261_yyh9wnvuf9cz0k9.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/carousel.css">
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/exmIndex.css">
+
+</head>
+<body>
+	<div id="app">
+		<v-topbar :topinfo="topinfo"
+				  :datalist="datalist" 
+				  @func1="appClick"
+		></v-topbar>
+		<v-imgbar></v-imgbar>
+		<v-slodbar></v-slodbar>
+		<v-tabbarwrap @func1="mobileSect"
+					  @func3="getProBycate" 
+					  :flagbar="flagbar" 
+					  :flagline="flagline" 
+					  :cate-list-arr="cateListArr">
+					  
+		</v-tabbarwrap>
+		<!-- <v-goodlist v-show="displayMode=='section_mobile'"></v-goodlist> -->
+		<!-- <v-goodlistnew v-show="displayMode=='section_new'"></v-goodlistnew> -->
+		<div class="gd_list">
+			<div class="gd_list_wrap">
+				<v-goodlist :pro-list-arr="proListArr"></v-goodlist>
+				
+			</div>
+		</div>
+
+		<v-pagin :total="total" 
+				 :current-page='currentPage' 
+				 @pagechange="pagechange">
+					
+		</v-pagin>
+		
+
+		<!--添加成功时消息提示-->
+		<div class="c-message" :class="message.status" v-show="message.show">
+	        <div class="c-message--main">
+	            <i class="c-message--icon" :class="message.type"></i>
+	            <div class="c-message--tip">{{message.text}}</div>
+	        </div>
+	    </div>
+	</div>
+	<template id="topBar">
+		<nav class="navbar">
+			<div class="container-fluid">
+	        <!-- Brand and toggle get grouped for better mobile display -->
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="#">
+	                <img src="../img/images/logo.PNG" alt="Brand" width="35" height="35">
+	            </a>
+	        </div>
+
+	        <!-- Collect the nav links, forms, and other content for toggling -->
+	        <div class="collapse navbar-collapse" id="header_nav">
+	            <ul class="list-inline list-styled center nav navbar-nav">
+	                <li class="active"><a href="#" @click.prevent="indexHome">首页 <span class="sr-only">(current)</span></a></li>
+	                <li><a href="#" @click.prevent="gotoAbout">关于我们</a></li>
+	                <li><a href="#">企业回收</a></li>
+	                <li><a href="#">帮助中心</a></li>
+	                <li><a href="#">网址导航</a></li>
+	            </ul>
+
+
+	            <ul class="nav navbar-nav navbar-right">
+	            	<li v-clickoutside="hidePanelSearch">
+	            		<div class="container search_sect">
+							<div class="input-group">
+								<input type="text" class="form-control input-lg" @keyup.enter="appClick(keywords)" v-model="keywords">
+								<span class="input-group-addon btn btn-primary" v-clickoutside="showPanelSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+							</div>
+						</div>
+						<div v-if="searchflag" >
+							<div id="dropDownMenu" class="vue-dropdown default-theme" v-show="(search(keywords).length!=datalist.length) && (search(keywords).length!=0)" >
+								<ul class="list-module">
+								   		<li :class="['list-module-mar',searchColorFlag==(index+1)?'list-module-color':'']" @mouseover="searchColorShow(index)" @mouseleave="searchColorHid(index)" v-for ="(item,index) in search(keywords)" @click="appClick(item.keyname)"
+								   		:key="index">
+								    		<span class="list-item-text">{{item.keyname}}</span>
+								   		</li>
+								</ul>
+							</div>
+						</div>
+						
+					
+						
+	            	</li>
+	                <li>
+	                     <a href="#" @click.prevent="gotoShopCart" class="shoppingCart">
+	                     	<i class="sc_count">9</i>
+	                     	<i class="glyphicon glyphicon-shopping-cart"></i>
+	                    	 &nbsp;购物车
+	                 	</a>
+	                </li>
+	                <li v-show="topinfo.isRegister"><a href="#">免费注册</a></li>
+		            <li v-show="topinfo.isLogin"><a href="#" @click="login">登录</a></li>
+	                <li v-show="topinfo.isShowName" @mouseover="infoShow" @mouseleave="infoHid"><a href="#" target="_blank">欢迎您：{{topinfo.nickName}}</a></li>  
+	            </ul>
+
+	            <div class="person_info" v-show="perInfo==true" @mouseover="infoShow" @mouseleave="infoHid">
+		        	<ul class="person_items">
+				    	<li class="person_li"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;个人中心</a></li>
+				    	<li class="person_li"><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;账号管理</a></li>
+				    	<!-- <li><a href="#">Something else here</a></li> -->
+				    	<li role="separator" class="divider person_li"></li>
+				    	<li class="person_li"><a href="#" @click="signOut"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;退出登录</a></li>
+				 	</ul>
+
+		        </div>
+	        </div><!-- /.container-fluid -->
+
+	        
+		</nav>
+		
+	</template>
+
+	<template id="imgBar">
+		<!-- <div class="row" id="section-banner" style="height: 357px;overflow: hidden;background: url('../img/images/beijing1.png') no-repeat center;background-size: cover"> -->
+            <!-- <div class="container no-plpr">
+                <h2 class="webfont101" style="color: #fff;font-size: 38px;padding-top: 20px;"></h2>
+            </div> -->
+            <!-- <div id="category-pop">
+                <div class="list-group">
+                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-phone"></i>&nbsp;手机回收</a>
+                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-inbox"></i>&nbsp;平板电脑回收</a>
+                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-credit-card"></i>&nbsp;&nbsp;笔记本回收</a>
+                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-camera"></i>&nbsp;摄影摄像回收</a>
+                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-dashboard"></i>&nbsp;智能数码回收</a>
+                </div>
+            </div> -->  
+        <!-- </div> -->
+        <div id="slider">
+			  <div class="window" @mouseover="stop" @mouseleave="play">
+				   <ul class="container_car" :style="containerStyle">
+					    <li>
+					    	 <img :src="sliders[sliders.length - 1].img" alt="">
+					    </li>
+					    <li v-for="(item, index) in sliders" :key="index">
+					  	     <img :src="item.img" alt="">
+					    </li>
+					    <li>
+					   		 <img :src="sliders[0].img" alt="">
+					    </li>
+				   </ul>
+				   <ul class="direction" v-show="isShow==true">
+					    <li :class="colorFlagLeft=='left'?'left':'left-green'" @mouseover="btnleftover" @mouseleave="btnleftleave" @click="move(1920, 1, speed)">
+					     <svg class="icon" width="30px" height="30.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M481.233 904c8.189 0 16.379-3.124 22.628-9.372 12.496-12.497 12.496-32.759 0-45.256L166.488 512l337.373-337.373c12.496-12.497 12.496-32.758 0-45.255-12.498-12.497-32.758-12.497-45.256 0l-360 360c-12.496 12.497-12.496 32.758 0 45.255l360 360c6.249 6.249 14.439 9.373 22.628 9.373z" /></svg>     
+					    </li>
+					    <li :class="colorFlagRight=='right'?'right':'right-green'" @mouseover="btnrightover" @mouseleave="btnrightleave"  @click="move(1920, -1, speed)">
+					     <svg class="icon" width="30px" height="30.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M557.179 904c-8.189 0-16.379-3.124-22.628-9.372-12.496-12.497-12.496-32.759 0-45.256L871.924 512 534.551 174.627c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0l360 360c12.496 12.497 12.496 32.758 0 45.255l-360 360c-6.249 6.249-14.439 9.373-22.628 9.373z" /></svg>     
+					    </li>
+				   </ul>
+				   <ul class="dots">
+					    <li v-for="(dot, i) in sliders" :key="i"
+					    :class="{dotted: i === (currentIndex-1)}"
+					    @click = jump(i+1)
+					    >
+					    </li>
+				   </ul>
+			  </div>
+		</div>
+	</template>
+
+	<template id="slodBar">
+		<div class="slod_bar">
+			<div class="slod_item_left">
+				<img class="slod_img" src="../img/images/yijianzhuanmai.png">
+				<div class="slod_desc">
+					<p class="desc_name">淘宝一键转卖</p>
+					<p class="desc_cont">近一年你在淘宝买了29件宝贝，能卖出607元</p>
+				</div>
+			</div>
+			<div class="slod_line"></div>
+			<div class="slod_item_right">
+				<img class="slod_img" src="../img/images/fabu.png">
+				<div class="slod_desc">
+					<p class="desc_name">发布闲置</p>
+					<p class="desc_cont">闲置换钱 快速出手</p>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="tabbarWrap">
+		<div class="tabbar_wrap">
+			<div class="tabbar_item" v-for="(cateItem,index) in cateListArr">
+				<a :class="[flagbar==(1+index)?'tabbar_active':'tabbar_name']" style="text-decoration: none;" @click="getProBycate(cateItem.typeId,index)">{{cateItem.typeName}}</a>
+				<div :class="[flagline==(1+index)?'tabbar_line':'']"></div>
+			</div>
+		</div>
+	</template>
+
+	<template id="goodListNew">
+		<div class="gd_list">
+			<div class="gd_list_wrap">
+				<div>
+					<a href="#" class="gd_item">
+						<div class="item_img"></div>
+						<div class="item_info">
+							<p class="info_title">daddsadsad,asdadsaacSaasasca</p>
+							<div class="price_line">
+								<div class="price">
+									<p class="price_unit">￥</p>
+									<p class="price_value">500</p>
+								</div>
+							</div>
+						</div>
+						<div class="item_user">
+							
+						</div>
+					</a>
+				</div>
+				
+			</div>
+		</div>
+	</template>
+
+	<template id="goodList">
+		<div class="item_list_warp">
+			<a href="#" class="gd_item" v-for="proItem in proListArr" style="text-decoration: none;" @click.prevent="gotoDetailPage(proItem.goodId,
+										   proItem.detailedPageDesc,
+										   proItem.detailedPageTitle,
+										   proItem.goodCapacity,
+										   proItem.goodPrice,
+										   proItem.originalPrice,
+										   proItem.goodDesc,
+										   proItem.goodName,
+										   proItem.goodParam,
+										   proItem.goodStock,
+										   proItem.subtitle,
+										   proItem.goodImg)">
+				<div class="item_img">
+					<img :src="proItem.goodImg" style="width: 200px;height: 200px;">
+				</div>
+				<div class="item_info">
+					<p class="info_title">{{proItem.subtitle}}</p>
+					<div class="price_line">
+						<div class="price">
+							<p class="price_unit">￥</p>
+							<p class="price_value">{{proItem.goodPrice}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="item_user">
+					
+				</div>
+			</a>
+		</div>
+	</template>
+
+	<template id="pagination">
+	  <nav>
+	    <ul class="pagination">
+	      <li :class="{'disabled': current == 1}"><a href="javascript:;" @click="setCurrent(current - 1)"> « </a></li>
+	      <li :class="{'disabled': current == 1}"><a href="javascript:;" @click="setCurrent(1)"> 首页 </a></li>
+	      <li v-for="p in grouplist" :class="{'active': current == p.val}"><a href="javascript:;"
+	                                                                          @click="setCurrent(p.val)"> {{ p.text }} </a>
+	      </li>
+	      <li :class="{'disabled': current == page}"><a href="javascript:;" @click="setCurrent(page)"> 尾页 </a></li>
+	      <li :class="{'disabled': current == page}"><a href="javascript:;" @click="setCurrent(current + 1)"> »</a></li>
+	    </ul>
+	  </nav>
+	</template>
+</body>
+<script src="../js/dynamicJS/exmIndex.js"></script>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>修改分类</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+    <script src="../js/common/tools.js"></script>
+    <script src="../vue2517.js"></script>
+    <!-- <script src="../vue-router302.js"></script> -->
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/updateCate.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+</head>
+<body>
+	<div id="app">
+		<v-header></v-header>
+		<v-contaddcate :name="name" :recommend="recommend" @func="submit"></v-contaddcate>
+
+
+		<!--添加成功时消息提示-->
+		<div class="c-message" :class="message.status" v-show="message.show">
+	        <div class="c-message--main">
+	            <i class="c-message--icon" :class="message.type"></i>
+	            <div class="c-message--tip">{{message.text}}</div>
+	        </div>
+	    </div>
+	</div>
+
+	<template id="header">
+		<nav class="navbar navbar-default clearfix">
+		    <div class="container">
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="#">商城后台</a>
+		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		            <ul class="nav navbar-nav">
+		                <li class="${light==1?'active':''}"><a href="#">分类管理</a></li>
+		                <li class="${light==2?'active':''}"><a href="#">用户管理</a></li>
+		                <li class="${light==3?'active':''}"><a href="#">订单管理</a></li>
+		                <li class="${light==4?'active':''}"><a href="#">网站设置</a></li>
+		            </ul>
+		            <ul class="nav navbar-nav navbar-right">
+		                <li class=""><a href="../../../" target="_blank" >网站前台</a></li>
+		            </ul>
+		        </div><!--/.nav-collapse -->
+		    </div>
+		</nav>
+	</template>
+	
+	<template id="contAddCate">
+		<div class="container">
+		    <div class="row" >
+		        <div class="panel panel-default" style="width: 650px;margin:auto">
+		            <div class="panel-heading">新增分类</div>
+		            <div class="panel-body">
+		                <form class="form-horizontal" method="post" id="add-form" action="add" enctype="multipart/form-data">
+		                    <div class="form-group">
+		                        <label for="name" class="col-sm-2 control-label">分类名字</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="name"
+		                                   placeholder="请输入分类名字" v-model="name">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="name" class="col-sm-2 control-label">数量单位</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="quantityunit"
+		                                   placeholder="" v-model="quantityunit">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="name" class="col-sm-2 control-label">排序</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="catesort"
+		                                   placeholder="0" v-model="catesort">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">是否显示</label>
+		                        <div class="col-sm-10 single_box_col">
+		                            <label class="radio-inline">
+									  	<input type="radio" id="inlineRadio1" value="0" v-model="whethershow"> 是
+									</label>
+									<label class="radio-inline">
+									  	<input type="radio" id="inlineRadio2" value="1" v-model="whethershow"> 否
+									</label>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">显示在导航栏</label>
+		                        <div class="col-sm-10 single_box_col">
+		                            <label class="radio-inline">
+									  	<input type="radio" id="inlineRadio1" value="0" v-model="whetherbar"> 是
+									</label>
+									<label class="radio-inline">
+									  	<input type="radio" id="inlineRadio2" value="1" v-model="whetherbar"> 否
+									</label>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="file" class="col-sm-2 control-label">分类图标</label>
+		                        <div class="col-sm-10">
+		                            <input id="fileImg" type="file" class="file" accept="image/*" @change="preview($event)">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">帅选属性</label>
+		                        <div class="col-sm-8 select_opt">
+		                            <select class="form-control">
+										  <option>1</option>
+										  <option>2</option>
+										  <option>3</option>
+										  <option>4</option>
+										  <option>5</option>
+									</select>
+		                        </div>
+		                        <div class="col-sm-2">
+		                        	<button class="btn btn-default">删除</button>
+		                        </div>
+		                        <div>
+		                        	<div class="col-sm-2"></div> 
+		                        	<div class="col-sm-10 select_sort">
+		                        		<button class="btn btn-default" >增加</button>
+		                        	</div>
+		                        	
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">关键词</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="keyword" value="" v-model="keyword">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">分类描述</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="attributes" value="" v-model="catedesc">
+		                        </div>
+		                    </div>
+		                    <!-- <div class="form-group">
+		                        <label for="file" class="col-sm-2 control-label">图片文件</label>
+		                        <div class="col-sm-10">
+		                            <input id="file" name="image" type="file" class="file" accept="image/*">
+		                        </div>
+		                    </div> -->
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">推荐优先级</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="recommend" name="recommend"
+		                                   placeholder="默认为0不推荐，首页不显示产品大图。优先级越高排越前" value="0" v-model="recommend">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <div style="text-align: center">
+		                            <button type="submit" @click.prevent="submit" class="btn btn-success btn-sm">提交修改</button>
+		                        </div>
+		                    </div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		
+	</template>
+</body>
+<script src="../js/dynamicJS/updateCate.js"></script>
+</html>

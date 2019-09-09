@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>详细页面</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common/tools.js"></script>
+	<script src="../vue2517.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/titatoggle-dist-min.css">
+	<link rel="stylesheet" type="text/css" href="../css/awesome-bootstrap-checkbox.css"> -->
+
+	<!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/detailPage.css">
+</head>
+<body>
+	<div id="app">
+		<v-topbar :topinfo="topinfo" :user-id="userId"></v-topbar>
+		<v-sectiontop></v-sectiontop>
+		<v-sectioncenter :detail-page-info="detailPageInfo" :user-id="userId"></v-sectioncenter>
+		<v-sectionbuttom></v-sectionbuttom>
+
+
+		<!--添加成功时消息提示-->
+		<div class="c-message" :class="message.status" v-show="message.show">
+	        <div class="c-message--main">
+	            <i class="c-message--icon" :class="message.type"></i>
+	            <div class="c-message--tip">{{message.text}}</div>
+	        </div>
+	    </div>
+
+	</div>
+	<template id="topBar">
+		<nav class="navbar">
+			<div class="container-fluid">
+	        <!-- Brand and toggle get grouped for better mobile display -->
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="#">
+	                <img src="../img/images/logo.PNG" alt="Brand" width="35" height="35">
+	            </a>
+	        </div>
+
+	        <!-- Collect the nav links, forms, and other content for toggling -->
+	        <div class="collapse navbar-collapse" id="header_nav">
+	            <ul class="list-inline list-styled center nav navbar-nav">
+	                <li class="active"><a href="#" @click.prevent="indexHome">首页 <span class="sr-only">(current)</span></a></li>
+	                <li><a href="#" @click.prevent="gotoAbout">关于我们</a></li>
+	                <li><a href="#">企业回收</a></li>
+	                <li><a href="#">帮助中心</a></li>
+	                <li><a href="#">网址导航</a></li>
+	             </ul>
+
+
+	            <ul class="nav navbar-nav navbar-right">
+	                <li>
+	                     <a href="#" @click.prevent="gotoShopCart" class="shoppingCart">
+	                     	<i class="sc_count">9</i>
+	                     	<i class="glyphicon glyphicon-shopping-cart"></i>
+	                    	 &nbsp;购物车
+	                 	</a>
+	                </li>
+	                <li v-show="topinfo.isRegister"><a href="#">免费注册</a></li>
+		            <li v-show="topinfo.isLogin"><a href="#" @click="login">登录</a></li>
+	                <li v-show="topinfo.isShowName" @mouseover="infoShow" @mouseleave="infoHid"><a href="#" target="_blank">欢迎您：{{topinfo.nickName}}</a></li>  
+	            </ul>
+
+	            <div class="person_info" v-show="perInfo==true" @mouseover="infoShow" @mouseleave="infoHid">
+		        	<ul class="person_items">
+				    	<li class="person_li"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;个人中心</a></li>
+				    	<li class="person_li"><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;账号管理</a></li>
+				    	<!-- <li><a href="#">Something else here</a></li> -->
+				    	<li role="separator" class="divider person_li"></li>
+				    	<li class="person_li"><a href="#" @click="signOut"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;退出登录</a></li>
+				 	</ul>
+
+		        </div>
+
+	        </div><!-- /.container-fluid -->
+		</nav>
+		
+	</template>
+
+	<template id="sectionTop">
+		<section class="banner">
+		    <div class="top_line"></div>
+		</section>
+	</template>
+
+	<template id="sectionCenter">
+		<section class="property">
+		    <div class="gallery">
+		        <div class="pic-border">
+		            <img :src="detailPageInfo.goodImg" id="big-show">
+		        </div>
+		        <div class="pic-ls" id="pic-ls">
+		            <!-- <C:forEach items="${productTopImages}" var="img" varStatus="vs">
+		                <img src="../img/f92bf948c2fe78b9.jpg" big-image="${productImgDir}${img.path}" class="sm-image ${vs.count == 1?'selected':''}">
+		            </C:forEach> -->
+		            <div >
+		            	<img :src="detailPageInfo.goodImg" big-image="" class="sm-image ${vs.count == 1?'selected':''}">
+		            </div>
+		        </div>
+		        <div id="div4load" style="display:none;"></div>
+		    </div>
+		    <div class="detail">
+		        <div class="product-title">
+		            {{detailPageInfo.detailedPageTitle}}
+		        </div>
+		        <div class="price">
+		            <div class="sales">
+		                <img src="../img/gouwu.png">全站实物商品通用
+		            </div>
+		            <div class="top-line">
+		                <span class="o-price left">市场价</span>
+		                <span class="o-price-num">￥{{detailPageInfo.originalPrice}}</span>
+		            </div>
+		            <div class="middle-line">
+		                <span class="s-price left">转卖价</span>
+		                <span class="yen">￥</span><span class="s-price-num">{{detailPageInfo.goodPrice}}</span>
+		            </div>
+		            <div class="top-line-cs">
+		                <span class="o-price left">成色</span>
+		                <span class="o-price-num-cs">{{detailPageInfo.goodDesc}}</span>
+		            </div>
+		            <div class="top-line">
+		                <span class="o-price left">联系方式</span>
+		                <span class="o-price-num-cs">{{detailPageInfo.goodDesc}}</span>
+		            </div>
+		            <div class="top-line">
+		                <span class="o-price left">所在地</span>
+		                <span class="o-price-num-cs">{{detailPageInfo.goodDesc}}</span>
+		            </div>
+		        </div>
+		        <div class="history">
+		            <span class="m-sales item">月销量 <em>{{detailPageInfo.salesVolume}}</em></span>
+		            <span class="c-num item">累计评价 <em>{{detailPageInfo.salesVolume}}</em></span>
+		            <span class="t-score item">送积分 <em>{{detailPageInfo.salesVolume}}</em></span>
+		        </div>
+		        <div class="product-num">
+		            <span class="buy-num left">数量</span>
+		            <input type="text" class="input" value="1" id="buy-number">
+		            <span class="arrow">
+		                    <a class="increase-number" id="increase-number" href="#nowhere">
+		                    <span class="updown arrow-png">
+		                       <img src="../img/increase.png">
+		                    </span>
+		                    </a>
+		                    <span class="updown-middle"> </span>
+		                    <a class="decrease-number" id="decrease-number" href="#nowhere">
+		                    <span class="updown arrow-png">
+		                        <img src="../img/decrease.png">
+		                    </span>
+		                    </a>
+		                </span>
+		            <span class="piece">件</span>
+		            <span class="inventory" id="inventory" stock="${product.stock}">库存${product.stock}件</span>
+		        </div>
+		        <div class="buy">
+		            <a href="buyOne?pid=${product.id}" id="buy-link" class="display:none;"></a>
+		            <a href="addCart?pid=${product.id}" id="cart-link" class="display:none;"></a>
+		            <button class="buy-button" id="buy-button">立即购买</button>
+		            <button class="car-button" id="cart-button" @click.prevent="gotoShoppingCart(
+						detailPageInfo.goodName,
+						detailPageInfo.goodParam,
+						detailPageInfo.subtitle,
+						detailPageInfo.goodPrice,
+						detailPageInfo.originalPrice,
+						detailPageInfo.goodId,
+						detailPageInfo.goodDesc,
+						userId
+		            )"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button>
+		        </div>
+		        <div class="service">
+		            <span class="left">服务承诺</span>
+		            <span>正品保证</span>
+		            <span>极速退款</span>
+		            <span>七天无理由退换</span>
+		        </div>
+		    </div>
+		</section>
+	</template>
+
+	<template id="sectionButtom">
+		<main class="product-content">
+		    <div class="product-bar">
+		        <div class="product-select selected" href="#nowhere" id="button-1">
+		            <a href="#nowhere">商品详情</a>
+		        </div>
+		        <div class="product-select" href="#nowhere" id="button-2">
+		            <a href="#nowhere">
+		                累计评价
+		                <span class="product-comment-number">${product.commentCount}</span>
+		            </a>
+		        </div>
+		    </div>
+		    <div class="clear" id="main-1">
+		        <div class="product-top">
+		            <div class="product-key-title">产品参数：</div>
+		            <ul class="product-key">
+		                <!-- <c:forEach items="${propertyValues}" var="p" varStatus="vs">
+		                    <li>${p.property.name}: ${p.value}</li>
+		                </c:forEach> -->
+		                <li>${p.property.name}: ${p.value}</li>
+		            </ul>
+		        </div>
+		        <div class="product-content-part">
+		            <!-- <c:forEach items="${productDetailImages}" var="img" varStatus="vs">
+		                <img src="${productImgDir}${img.path}">
+		            </c:forEach> -->
+		            <img src="">
+		        </div>
+		    </div>
+		    <div class="clear" id="main-2" style="display: none;">
+		        <table class="comment">
+		            <!-- <c:forEach items="${comments}" var="c" varStatus="vs">
+		            <tr>
+		                <td class="comment-left">${c.content}
+		                    <span class="date">${c.createDate}</span></td>
+		                <td class="comment-right">${c.user.name}<span class="annoy">（匿名）</span></td>
+		            </tr>
+		            </c:forEach> -->
+		            <tr>
+		                <td class="comment-left">${c.content}
+		                    <span class="date">${c.createDate}</span></td>
+		                <td class="comment-right">${c.user.name}<span class="annoy">（匿名）</span></td>
+		            </tr>
+		        </table>
+		    </div>
+		</main>
+	</template>
+</body>
+<script src="../js/dynamicJS/detailPage.js"></script>
+</html>

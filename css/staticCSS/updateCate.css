@@ -1,0 +1,37 @@
+
+.single_box{
+	height: 29px;
+	width:250px;
+	margin-top: 5px;
+}
+.single_box_radio{
+	display: inline;
+}
+.single_box_text{
+	margin-left: 10px;
+}
+.select_opt{
+	margin-bottom: 5px;
+}
+.select_sort{
+	margin-left: 108px;
+}
+
+/*导航栏*****************/
+
+.clearfix{
+	background-color: #124fa0;
+	
+}
+
+.collapse{
+	color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}

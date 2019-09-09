@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>register</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+    <!-- <link rel="stylesheet" href="../datePlus/css/index1.css" type="text/css"></link>  -->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/common/md5.js"></script>
+    <script src="../js/common/moment-with-locales.js"></script>
+    <script src="../js/common/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="../js/common/tools.js"></script>
+    <!-- <script src="../js/bootstrap.min.js"></script> -->
+    <!-- <script src="../datePlus/My97DatePicker/WdatePicker.js"></script> -->
+    <script src="../vue2517.js"></script>
+    <!-- <script src="../axios.js"></script> -->
+    <script src="../vue-resource151.js"></script>
+</head>
+<body>
+	<div id="app">
+		<header class="pay-header login">
+		    <a href="./" class="logo">
+		        <img src="../img/ershoulogo2.jpg" style="width: 200px; height: 80px;">
+		    </a>
+		</header>
+		<main class="register">
+
+		    <!-- <form id="form"> -->
+		    <table class="register-table">
+		        <tbody>
+		        <tr>
+		            <td colspan="2" class="register-tip">填写账号信息</td>
+		        </tr>
+		        <tr>
+		            <td class="left-col">登录名</td>
+		            <td class="right-col"><input placeholder="会员名一旦设置成功，无法修改" v-model="nickName"></td>
+		        </tr>
+		        <tr>
+		            <td class="left-col">手机号</td>
+		            <td class="right-col"><input placeholder="请输入你的手机号码" v-model="mobile"></td>
+		        </tr>
+		        <tr>
+		            <td class="left-col">邮箱</td>
+		            <td class="right-col"><input placeholder="请输入你的邮箱" v-model="email"></td>
+		        </tr>
+		        <tr>
+		            <td class="left-col">出生日期</td>
+		            <td class="right-col">
+		            	<!-- <input type="text" placeholder="请选择你的出生年月" v-model="dateOfBirth">
+		            	<span class="input-group-addon" @click="calendarPug">
+                    		<span class="glyphicon glyphicon-calendar"></span>
+                		</span> -->
+                		<div class='input-group date' id='datetimepicker1'>
+			                <input type='text' class="form-control" v-model="dateOfBirth"/>
+			                <span class="input-group-addon" @click="calendarPug">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+                	</td>
+		        </tr>
+		        <tr>
+		            <td class="left-col">地址</td>
+		            <td class="right-col"><input placeholder="请输入你的地址" v-model="address"></td>
+		        </tr>
+		        <tr>
+		            <td colspan="2" class="register-tip">设置密码</td>
+		        </tr>
+		        <tr>
+		            <td  class="left-col">登陆密码</td>
+		            <td class="right-col"><input type="password" placeholder="设置你的登陆密码" v-model="password"></td>
+		        </tr>
+		        <tr>
+		            <td  class="left-col">密码确认</td>
+		            <td class="right-col"><input type="password" placeholder="请再次输入你的密码" v-model="repeatpassword"> </td>
+		        </tr>
+		        <tr>
+		            <td colspan="2" class="button-td">
+		                <input type="hidden">
+		                <button @click="submit">注 册</button>
+		            </td>
+		        </tr>
+		        </tbody>
+		    </table>
+		    <!-- </form> -->
+		</main>
+	    <footer class="footer-bottom">
+
+
+		    <div class="foot-content login">
+		        <div class="copyright" id="copyright">
+		            <div class="white-link login-text">
+		                <a href="#nowhere">关于本站</a>
+		                <a href="#nowhere">帮助中心</a>
+		                <a href="#nowhere">开放平台</a>
+		                <a href="#nowhere"> 诚聘英才</a>
+		                <a href="#nowhere">联系我们</a>
+		                <a href="#nowhere">网站合作</a>
+		                <a href="#nowhere">法律声明</a>
+		                <a href="#nowhere">知识产权</a>
+		                <a href="#nowhere">廉正举报 </a>
+		            </div>
+		            <div class="white-link login-text">
+		                <a href="#nowhere"> 阿里巴巴集团</a><span class="slash">|</span>
+		                <a href="#nowhere"> 淘宝网</a><span class="slash">|</span>
+		                <a href="#nowhere">${website_name} </a><span class="slash">|</span>
+		                <a href="#nowhere"> 聚划算</a><span class="slash">|</span>
+		                <a href="#nowhere">全球速卖通</a><span class="slash">|</span>
+		                <a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
+		                <a href="#nowhere">1688</a><span class="slash">|</span>
+		                <a href="#nowhere">阿里妈妈</a><span class="slash">|</span>
+		                <a href="#nowhere"> 阿里旅行·去啊 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 阿里云计算 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 友盟 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 虾米 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 天天动听 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 来往 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 钉钉 </a><span class="slash">|</span>
+		                <a href="#nowhere"> 支付宝 </a>
+		            </div>
+		            <div class="license">
+		                <span>增值电信业务经营许可证： <a href="#nowhere">浙B2-20110446</a></span>
+		                <span>网络文化经营许可证：<a href="#nowhere">浙网文[2015]0295-065号</a></span>
+		                <span><a href="#nowhere">12318举报 </a></span><br>
+		                <span>互联网药品信息服务资质证书编号：<a href="#nowhere">浙-（经营性）-2012-0005</a></span>
+		                <div class="copy-right-year">© 2003-2017 TMALL.COM 版权所有</div>
+
+		            </div>
+		        </div>
+		    </div>
+		</footer>
+
+		<!--添加成功时消息提示-->
+		<div class="c-message" :class="message.status" v-show="message.show">
+	        <div class="c-message--main">
+	            <i class="c-message--icon" :class="message.type"></i>
+	            <div class="c-message--tip">{{message.text}}</div>
+	        </div>
+	    </div>
+		
+	</div>
+	
+</body>
+<script type="text/javascript">
+	//Vue.http.options.emulateJSON = false;
+	// Vue.http.options.emulateHTTP = true;
+	// Vue.http.options.headers = {
+	//     'Content-Type': 'application/json;charset=UTF-8'
+	// }
+	var vm = new Vue({
+        el:'#app',
+        data:{
+            nickName:'',
+            mobile:'',
+            email:'',
+            address:'',
+            dateOfBirth:'',
+            password:'',
+            repeatpassword:'',
+            message: {
+				show: false,
+				type: 'c-message--success',
+				status: 'messageFadeInDown',
+				text: '操作成功',
+				time: 2000,
+				timeout: null
+			}
+
+        },
+        methods:{
+        	submit:function(){
+        		if(isNull(this.nickName) || isNull(this.mobile)){
+                	vm.Alert("用户名或手机号不能为空..","warning",2000);
+                	return;
+                }
+                if(isNull(this.password)){
+                	vm.Alert("密码不能为空..","warning",2000);
+                	return;
+                }
+        		if(!isMobile(this.mobile)){
+        			vm.Alert("手机号码格式错误!","warning",2000);
+        			return;
+        		}
+        		if(!isEmail(this.email)){
+        			vm.Alert("邮箱格式错误!","warning",2000);
+        			return;
+        		}
+        		var requestUrl = "http://127.0.0.1:8000/demo_mybatis/reg_up_userinfo_jsons.tml";
+        		var paramData = {
+        			"nickName":this.nickName,
+        			"mobile":this.mobile,
+        			"email":this.email,
+        			"address":this.address,
+        			"dateOfBirth":this.dateOfBirth,
+        			"password":md5(this.password)
+        		};
+                
+                console.log("上送数据--------->");
+                console.log(paramData);
+                $.ajax({
+                    type : "POST",
+                    url : requestUrl,
+                    data : JSON.stringify(paramData), 
+                    dataType:"json",
+                    contentType:"application/json;charset=UTF-8",
+                    success : function(data) {
+　　　　　　　　　　　　　　//var message = $.parseJSON(data);//后台返回的json数据需要转为对象
+                         //vue.selectById=message;//把后台返回的JSON数据赋给selectById
+                         console.log(data.transCode + "接口返回--------->");
+                         console.log(data);
+                         if(data.rcode === "000000"){
+                         	window.location.href = "http://localhost:8080/graduClient/HTML/registerSuccess.html";
+                         }else if(data.rcode === "290009"){
+                         	vm.Alert(data.msg,"error",2000);
+                         }
+                    },
+                    error : function(){
+                        vm.Alert("Unexpected error","error",2000);
+                    }
+
+                });
+			},
+			calendarPug(){
+				console.log("------進來了------>")
+				$('#datetimepicker1').datetimepicker({
+			        format: 'YYYY-MM-DD',
+			        locale: moment.locale('zh-cn')
+			    });
+			},
+
+
+			//消息提示 type:success,info,warning,error
+			Alert: function(text, type, time) {
+				vm.message.status = '';
+				clearTimeout(vm.timeout)
+				vm.message.text = (typeof text == 'string') && text ? text : '我是默认';
+				vm.message.time = time ? time : 2000;
+				vm.message.type = 'c-message--' + (type ? type : 'info');
+				vm.message.show = true;
+				vm.message.status = 'messageFadeInDown';
+				vm.timeout = setTimeout(function() {
+					vm.message.status = 'messageFadeOutUp'
+					// event.target.addEventListener('transitionend', function () {
+					//     alert('动画结束了！');
+					// }, false)
+				}, vm.message.time)
+			}
+         } 
+    });
+</script>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>商品管理 - 图片管理</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+    <script src="../js/common/tools.js"></script>
+    <script src="../vue2517.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/manageProImages.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-default clearfix">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <a class="navbar-brand" href="#">商城后台</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav">
+	                <li class="${light==1?'active':''}"><a  href="../category/list">分类管理</a></li>
+	                <li class="${light==2?'active':''}"><a  href="../user/list">用户管理</a></li>
+	                <li class="${light==3?'active':''}"><a href="../order/list">订单管理</a></li>
+	                <li class="${light==4?'active':''}"><a href="../config/edit">网站设置</a></li>
+	            </ul>
+	            <ul class="nav navbar-nav navbar-right">
+	                <li class=""><a href="../../../" target="_blank" >网站前台</a></li>
+	            </ul>
+	        </div><!--/.nav-collapse -->
+	    </div>
+	</nav>
+
+	<div class="container">
+	    <ol class="breadcrumb">
+	        <li><a href="../../category/list">所有分类</a></li>
+	        <li><a href="../list?cid=${product.category.id}">${product.category.name}</a></li>
+	        <li>${product.name}</li>
+	        <li>图片管理</li>
+	    </ol>
+
+	    <div class="container" style="width:33.3%;float:left">
+	        <h4>封面图片</h4>
+
+	        <table class="table table-hover table-striped">
+	            <thead>
+	            <tr>
+	                <th scope="col">#</th>
+	                <th scope="col">图片</th>
+	                <th scope="col">删除</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+	            <c:if test="${!empty productCoverImage}">
+	                <tr>
+	                    <th scope="row">${productCoverImage.id}</th>
+	                    <td><img src="../../../${productImgDir}${productCoverImage.path}" height="50px"></td>
+	                    <td><a href="delete?id=${productCoverImage.id}" class="delete-button"><span
+	                            class="glyphicon glyphicon-trash"></span></a></td>
+	                </tr>
+	            </tbody>
+	            </c:if>
+	        </table>
+
+	        <div class="panel panel-default">
+	            <div class="panel-heading">新增图片</div>
+	            <div class="panel-body">
+	                <form class="form-horizontal" method="post" id="add-form3" action="add"
+	                      enctype="multipart/form-data">
+	                    <div class="form-group">
+	                        <label for="file3" class="col-sm-4 control-label">图片文件</label>
+	                        <div class="col-sm-8">
+	                            <input id="file3" name="image" type="file" class="file">
+	                        </div>
+	                    </div>
+	                    <input type="hidden" value="${product.id}" name="pid">
+	                    <input type="hidden" value="cover" name="type">
+	                    <div class="form-group">
+	                        <div style="text-align: center">
+	                            <button type="submit" class="btn btn-success btn-sm">新建图片</button>
+	                        </div>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+
+
+	    </div>
+
+	    <div class="container" style="width:33.3%;float:left">
+	        <h4>顶部图片</h4>
+
+	        <table class="table table-hover table-striped">
+	            <thead>
+	            <tr>
+	                <th scope="col">#</th>
+	                <th scope="col">图片</th>
+	                <th scope="col">删除</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+
+	            <c:forEach items="${productTopImages}" var="ti" varStatus="vs">
+	                <tr>
+	                    <th scope="row">${ti.id}</th>
+	                    <td><img src="../../../${productImgDir}${ti.path}" height="50px"></td>
+	                    <td><a href="  delete?id=${ti.id}" class="delete-button"><span
+	                            class="glyphicon glyphicon-trash"></span></a></td>
+	                </tr>
+	            </c:forEach>
+	            </tbody>
+	        </table>
+
+	        <div class="panel panel-default">
+	            <div class="panel-heading">新增图片</div>
+	            <div class="panel-body">
+	                <form class="form-horizontal" method="post" id="add-form" action="add"
+	                      enctype="multipart/form-data">
+	                    <div class="form-group">
+	                        <label for="file" class="col-sm-4 control-label">图片文件</label>
+	                        <div class="col-sm-8">
+	                            <input id="file" name="image" type="file" class="file">
+	                        </div>
+	                    </div>
+	                    <input type="hidden" value="${product.id}" name="pid">
+	                    <input type="hidden" value="top" name="type">
+	                    <div class="form-group">
+	                        <div style="text-align: center">
+	                            <button type="submit" class="btn btn-success btn-sm">新建图片</button>
+	                        </div>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+
+
+	    </div>
+
+	    <div class="container" style="width:33.3%;float:left">
+	        <h4>详情图片</h4>
+
+	        <table class="table table-hover table-striped">
+	            <thead>
+	            <tr>
+	                <th scope="col">#</th>
+	                <th scope="col">图片</th>
+	                <th scope="col">删除</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+
+	            <c:forEach items="${productDetailImages}" var="ti" varStatus="vs">
+	                <tr>
+	                    <th scope="row">${ti.id}</th>
+	                    <td><img src="../../../${productImgDir}${ti.path}" height="50px"></td>
+	                    <td><a href="delete?id=${ti.id}" class="delete-button"><span
+	                            class="glyphicon glyphicon-trash"></span></a></td>
+	                </tr>
+	            </c:forEach>
+	            </tbody>
+	        </table>
+
+	        <div class="panel panel-default">
+	            <div class="panel-heading">新增图片</div>
+	            <div class="panel-body">
+	                <form class="form-horizontal" method="post" id="add-form2" action="add"
+	                      enctype="multipart/form-data">
+	                    <div class="form-group">
+	                        <label for="file2" class="col-sm-4 control-label">图片文件</label>
+	                        <div class="col-sm-8">
+	                            <input id="file2" name="image" type="file" class="file">
+	                        </div>
+	                    </div>
+	                    <input type="hidden" value="${product.id}" name="pid">
+	                    <input type="hidden" value="detail" name="type">
+	                    <div class="form-group">
+	                        <div style="text-align: center">
+	                            <button type="submit" class="btn btn-success btn-sm">新建图片</button>
+	                        </div>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+
+
+	    </div>
+	</div>
+
+	<div class="footer">
+	</div>
+
+</body>
+<script src="../js/dynamicJS/manageProImages.js"></script>
+</html>

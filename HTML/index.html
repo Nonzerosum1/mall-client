@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/common/tools.js"></script>
+    <script src="../vue2517.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/index.css">
+</head>
+<body>
+	<nav class="navbar">
+	    <div class="container-fluid">
+	        <!-- Brand and toggle get grouped for better mobile display -->
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="#">
+	                <img src="../img/images/logo.PNG" alt="Brand" width="35" height="35">
+	            </a>
+	        </div>
+
+	        <!-- Collect the nav links, forms, and other content for toggling -->
+	        <div class="collapse navbar-collapse" id="header_nav">
+	            <ul class="list-inline list-styled center nav navbar-nav">
+	                <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+	                <li><a href="#">关于我们</a></li>
+	                <li><a href="#">企业回收</a></li>
+	                <li><a href="#">帮助中心</a></li>
+	                <li><a href="#">网址导航</a></li>
+	             </ul>
+
+
+	            <ul class="nav navbar-nav navbar-right">
+	                <li>
+	                     <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;购物车</a>
+	                </li>
+	                
+	                <!-- <% if (session.getAttribute("username") == null){%>
+	                	
+	                	<li><a href="#">免费注册</a></li>
+		                <li><a href="getLogin.do">登录</a></li>
+	                	
+	                <% }if (session.getAttribute("username") != null){ %>
+	                	<li><a href="dishomepage.do" target="_blank">欢迎您：<%=session.getAttribute("username")%></a></li>
+	                <% } %>   -->
+	                <li v-show="isRegister"><a href="#">免费注册</a></li>
+		            <li v-show="isLogin"><a href="getLogin.do">登录</a></li>
+	                <li v-show="isShowName"><a href="dishomepage.do" target="_blank">欢迎您：{{nickName}}</a></li>  
+	            </ul>
+
+	        </div><!-- /.container-fluid -->
+
+	        <div class="row" id="section-banner" style="height: 357px;overflow: hidden;background: url('../img/images/beijing1.png') no-repeat center;background-size: cover">
+	            <div class="container no-plpr">
+	                <h2 class="webfont101" style="color: #fff;font-size: 38px;padding-top: 20px;"></h2>
+	            </div>
+	            <!-- <div id="category-pop">
+	                <div class="list-group">
+	                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-phone"></i>&nbsp;手机回收</a>
+	                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-inbox"></i>&nbsp;平板电脑回收</a>
+	                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-credit-card"></i>&nbsp;&nbsp;笔记本回收</a>
+	                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-camera"></i>&nbsp;摄影摄像回收</a>
+	                    <a href="#" class="list-group-item "><i class="glyphicon glyphicon-dashboard"></i>&nbsp;智能数码回收</a>
+	                </div>
+	            </div> -->
+
+	        </div>
+
+			<!-- <div class="row" id="classify">
+				<div id="classify-h1">什么都能收</div>
+				<div id="classify-h2">二手轻松换成钱</div>
+			</div> -->
+	        
+	        <!-- <div class="row" id="section-flow" style="height: 173px;overflow: hidden;background: url('../img/images/liucheng.PNG') no-repeat center">
+	        </div> -->
+	        
+
+	        <!-- <div class="subnav-warp">
+	            <div class="section subnav">
+	                <div class="container no-plpr">
+	                    <ul class="list-inline list-styled center nav nav-tabs nav-justified">
+	                        <li class="active"><a href=" ">手机</a></li>
+	                        <li class=""><a href=" ">笔记本</a></li>
+	                        <li class=""><a href=" ">平板电脑</a></li>
+	                        <li class=""><a href=" ">摄影摄像</a></li>
+	                        <li class=""><a href=" ">智能数码</a></li>
+	                     </ul>
+	                </div>
+	            </div>
+	        </div> -->
+			
+			<!-- 显示官方商品信息 -->
+	        <!-- <div class="row pro-3" id="displayProductIndex">
+	        	<c:forEach items="${productIndexs }" var="productIndex">
+	        		<div class="col-md-3">
+		                <li>
+		                	<a href="#">
+			                    <div class="imgbox">
+	 		                        <img src="${productIndex.picSrc }">
+	 		                    </div>
+			                    <span class="name">${productIndex.name }</span> 
+			                    <span>回收最高价&nbsp;<i>￥${productIndex.maxPrice }</i></span>
+	 	                    </a>
+		                </li>
+	            	</div>
+	        	</c:forEach>
+	        </div> -->
+	        
+	        
+	        <!-- <div class="row" id="section-flow2" style="height: 224px;overflow: hidden;background: url('../img/images/jinamianli.png') no-repeat center">
+	        
+	        </div> -->
+
+			<!-- <div class="row" id="classify2">
+				<div id="classify2-h1">什么都能买</div>
+				<div id="classify2-h2">买啥都省一半钱</div>
+			</div> -->
+			<div class="slod_bar">
+				<div class="slod_item_left">
+					<img class="slod_img" src="../img/images/yijianzhuanmai.png">
+					<div class="slod_desc">
+						<p class="desc_name">淘宝一键转卖</p>
+						<p class="desc_cont">近一年你在淘宝买了29件宝贝，能卖出607元</p>
+					</div>
+				</div>
+				<div class="slod_line"></div>
+				<div class="slod_item_right">
+					<img class="slod_img" src="../img/images/fabu.png">
+					<div class="slod_desc">
+						<p class="desc_name">发布闲置</p>
+						<p class="desc_cont">闲置换钱 快速出手</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="tabbar_wrap">
+				<div class="tabbar_item">
+					<p class="tabbar_active">新鲜</p>
+					<div class="tabbar_line"></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">附近</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">关注</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">手机</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">数码</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">租房</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">服装</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">居家</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">美妆</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">运动</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">家电</p>
+					<div></div>
+				</div>
+				<div class="tabbar_item">
+					<p class="tabbar_name">玩具乐器</p>
+					<div></div>
+				</div>
+			</div>
+
+			<div class="gd_list">
+				<div class="gd_list_wrap">
+					<a href="#" class="gd_item">
+						<div class="item_img"></div>
+						<div class="item_info">
+							<p class="info_title">daddsadsad,asdadsaacSaasasca</p>
+							<div class="price_line">
+								<div class="price">
+									<p class="price_unit">￥</p>
+									<p class="price_value">100</p>
+								</div>
+							</div>
+						</div>
+						<div class="item_user">
+							
+						</div>
+					</a>
+				</div>
+			</div>
+			
+			<!-- <div class="subnav-warp">
+	            <div class="section subnav">
+	                <div class="container no-plpr">
+	                    <ul class="list-inline list-styled center nav nav-tabs nav-justified">
+	                        <li class="active"><a href=" ">生活用品</a></li>
+	                        <li class=""><a href=" ">学习用品</a></li>
+	                        <li class=""><a href=" ">运动健身</a></li>
+	                        <li class=""><a href=" ">球鞋配饰</a></li>
+	                        <li class=""><a href=" ">珠宝收藏</a></li>
+	                     </ul>
+	                </div>
+	            </div>
+	        </div> -->
+	        
+			<!-- 用户展示商品区 -->
+			<!-- <div class="row pro-3" id="displayUserProductIndex">
+	        	<c:forEach items="${transtionProducts }" var="transtionProduct">
+	        		<div class="col-md-3">
+		                <li>
+		                	<a href="getPurchase.do?id=${transtionProduct.id} }">
+			                    <div class="imgbox">
+	 		                        <img src="${transtionProduct.tpPicsrc }" width="168px" height="168px">
+	 		                    </div>
+			                    <span class="name">${transtionProduct.tpName }</span> 
+			                    <span>回收最高价&nbsp;<i>￥${transtionProduct.tpCostprice }</i></span>
+	 	                    </a>
+		                </li>
+	            	</div>
+	        	</c:forEach>
+	        </div> -->
+	    </div>
+	</nav>
+</body>
+<script src="../js/dynamicJS/index.js"></script>
+</html>

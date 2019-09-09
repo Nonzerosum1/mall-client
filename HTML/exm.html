@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>演示</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/common/tools.js"></script>
+	<script src="../vue2517.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/titatoggle-dist-min.css">
+	<link rel="stylesheet" type="text/css" href="../css/awesome-bootstrap-checkbox.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+	<link rel="stylesheet" type="text/css" href="../css/staticCSS/exm.css">
+
+</head>
+<body>
+	<div id="app">
+		<!-- <input type="button" value="弹框" @click="bulletBox"> -->
+		<!-- <tankuang v-if="flag"></tankuang> -->
+		<!-- <del-comfire v-if="flag"></del-comfire> -->
+		<!-- <v-dialog :show-dialog="showDialog" :msg="msg" :type="type"></v-dialog>
+		<input type="text" name="" v-model="amount">
+		<input type="button" value="弹框" @click="submit">
+
+		<input type="button" value="消息提示" @click="msgManage">
+		<div class="c-message" :class="message.status" v-show="message.show">
+	        <div class="c-message--main">
+	            <i class="c-message--icon" :class="message.type"></i>
+	            <div class="c-message--tip">{{message.text}}</div>
+	        </div>
+	    </div> -->
+	    <!-- <img src="" id="img">
+	    <input type="file" id="fileImg" name="image" class="getImgUrl_file" @change="preview($event)" accept="image/gif,image/jpeg,image/jpg,image/png"> -->
+		
+
+		<!-- <div class="steps_main steps_4">
+			<ol>
+				<li class="active">
+					<i>1</i>
+					<span>填写商品信息</span>
+				</li>
+				<li>
+					<i>2</i>
+					<span>填写商品促销</span>
+				</li>
+				<li>
+					<i>3</i>
+					<span>填写商品属性</span>
+				</li>
+			</ol>
+		</div> -->
+
+		<!-- <div class="container">
+			
+		    <div class="row" >
+		        <div class="panel" style="width: 800px;margin:auto">
+		           
+		            <div class="panel-body">
+		                <form class="form-horizontal" id="add-form">
+							<div class="form-group">
+		                        <label class="col-sm-2 control-label">赠送积分</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="giftpoint" 
+		                                   placeholder="" v-model="giftpoint">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">赠送成长值</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="giftgrowthvalue" 
+		                                   placeholder="" v-model="giftgrowthvalue">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">预告商品</label>
+		                        <div class="col-sm-10 checkbtn checkbox-slider--b-flat">
+		                        	<label>
+		                            	<input type="checkbox" value="1" v-model="trailnoticegood">
+		                            	<span></span>	
+		                        	</label>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">商品上架</label>
+		                        <div class="col-sm-10 checkbtn checkbox-slider--b-flat">
+		                        	<label>
+		                            	<input type="checkbox" value="1" v-model="commodityshelves">
+		                            	<span></span>	
+		                        	</label>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">商品推荐</label>
+		                        <div class="col-sm-5 checkbtn checkbox-slider--b-flat">
+		                        	<label>
+		                            	<input type="checkbox" value="1" v-model="productsfeaturednew">
+		                            	<span>新品</span>	
+		                        	</label>
+
+		                        </div>
+		                        <div class="col-sm-5 checkbtn checkbox-slider--b-flat">
+		                        	<label>
+		                            	<input type="checkbox" value="1" v-model="productsfeaturedtui">
+		                            	<span>推荐</span>	
+		                        	</label>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">服务保证</label>
+		                        <div class="col-sm-10">
+		                            
+									<div class="checkbox checkbox-primary col-sm-4 checkbox_btn">
+										<input type="checkbox" id="checkbox1" value="option1" class="styled">
+										<label for="checkbox1">无忧退货</label>
+									</div>
+									<div class="checkbox checkbox-primary col-sm-4 checkbox_btn">
+										<input type="checkbox" id="checkbox2" value="option2" class="styled">
+										<label for="checkbox2">快速退款</label>
+									</div>
+									<div class="checkbox checkbox-primary col-sm-4 checkbox_btn">
+										<input type="checkbox" id="checkbox3" value="option3" class="styled">
+										<label for="checkbox3">免费包邮</label>
+									</div>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">详细页标题</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="detailedpagetitle" 
+		                                   placeholder="" v-model="detailedpagetitle">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">详细页描述</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="detailedpagedesc" 
+		                                   placeholder="" v-model="detailedpagedesc">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">商品关键字</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="goodkeywords" 
+		                                   placeholder="" v-model="goodkeywords">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">商品备注</label>
+		                        <div class="col-sm-10">
+		                            <input type="text" class="form-control" id="goodnote" 
+		                                   placeholder="" v-model="goodnote">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">选择优惠方式</label>
+		                        <div class="col-sm-10">
+		                            <div class="btn-group" role="group" aria-label="...">
+										  <button type="button" class="btn btn-default">无优惠</button>
+										  <button type="button" class="btn btn-default">特惠促销</button>
+										  <button type="button" class="btn btn-default">会员价格</button>
+										  <button type="button" class="btn btn-default">阶梯价格</button>
+										  <button type="button" class="btn btn-default">满减价格</button>
+									</div>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <div style="text-align: center">
+		                        	<button type="submit" class="btn btn-default btn-sm" @click="upProInfo">上一步，填写商品信息</button>
+		                            <button type="submit" class="btn btn-success btn-sm" @click="upProInfo">下一步，填写商品属性</button>
+		                        </div>
+		                    </div>
+
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</div> -->
+		<!-- <v-promanageadd3 :color-list="colorList" @func="addColor" @funcdel="deleteColor"></v-promanageadd3> -->
+	</div>
+
+	<template id="proManageAdd3">
+		<div class="container">
+			
+		    <div class="row" >
+		        <div class="panel" style="width: 800px;margin:auto">
+		            <!-- <div class="panel-heading">新增商品</div> -->
+		            <div class="panel-body">
+		                <form class="form-horizontal" id="add-form">
+							<div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">属性类型</label>
+		                        <div class="col-sm-8 select_opt">
+		                            <select class="form-control">
+										  <option>服装-T恤</option>
+										  <option>服装-裤装</option>
+										  <option>手机数码-手机通讯</option>
+										  <option>配件</option>
+										  <option>居家</option>
+										  <option>洗护</option>
+										  <option>测试分类</option>
+
+									</select>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label for="recommend" class="col-sm-2 control-label">商品规格</label>
+		                        <div class="col-sm-8 select_opt">
+		                            <div>
+		                            	<div class="color_section">
+		                            		<label>颜色:</label>
+		                            		<!-- <tr v-for="colorItem in colorList">
+		                            			<td>
+		                            				<div class="color_check">
+				                            			<div class="radio radio-circle col-sm-3 radio_btn">
+															<input type="radio" id="radio1" value="1" class="styled">
+															<label for="radio1" class="lab_radio">{{colorItem.colorName}}</label>
+														</div>
+				                            		</div>
+		                            			</td>
+		                            			
+		                            		</tr> -->
+		                            		<div class="color_check" v-for="(colorItem,index) in colorList">
+		                            			<div class="radio radio-circle col-sm-3 radio_btn">
+													<input type="radio" :id="index" value="1" class="styled">
+													<label :for="index" class="lab_radio">{{colorItem.colorName}}</label>
+												</div>
+												<div class="delete_btn">
+													<button class="btn btn-default btn-sm"  @click.prevent="deleteColor(index)">删除</button>
+												</div>
+		                            		</div>
+		                            		
+		                            		<div class="inp_check">
+		                            			<input type="text" class="form-control col-sm-10 inp_section" name="" v-model="colorNameInp">
+		                            			<button class="btn btn-default col-sm-2 btn_section" @click.prevent="addColor">增加</button>
+		                            		</div>
+		                            		
+		                            	</div>
+		                            	<div class="color_section">
+		                            		<label>容量:</label>
+		                            		<div class="all_radio">
+		                            			<div class="radio radio-circle col-sm-3 radio_btn">
+													<input type="radio" id="radio1" value="option1" class="styled">
+													<label for="radio1" class="lab_radio">16G</label>
+												</div>
+
+												<div class="radio radio-circle col-sm-3 radio_btn">
+													<input type="radio" id="radio2" value="option1" class="styled">
+													<label for="radio2">32G</label>
+												</div>
+
+												<div class="radio radio-circle col-sm-3 radio_btn">
+													<input type="radio" id="radio3" value="option1" class="styled">
+													<label for="radio3">64G</label>
+												</div>
+
+												<div class="radio radio-circle col-sm-3 radio_btn">
+													<input type="radio" id="radio4" value="option1" class="styled">
+													<label for="radio4">128G</label>
+												</div>
+		                            		</div>
+	                            			
+		                            		
+		                            	</div>
+		                            </div>
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">属性图片</label>
+		                        <div class="col-sm-10">
+		                            <input id="fileImg" type="file" class="file" accept="image/*" @change="preview($event)">
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                        <label class="col-sm-2 control-label">商品参数</label>
+		                        <div class="col-sm-10">
+		                        	<div class="item_param">
+		                        		<label class="lab_param">屏幕尺寸:</label>
+		                        		<input type="text" class="form-control inp_width" id="goodnote" 
+		                                   placeholder="" v-model="goodnote">
+		                        	</div>
+		                            <div class="item_param">
+		                            	<label class="lab_param">网络:</label>
+		                            	<div class="select_opt inp_width">
+				                            <select class="form-control">
+												  <option>4G</option>
+												  <option>3G</option>								
+											</select>
+				                        </div>
+		                            </div>
+		                            <div class="item_param">
+		                            	<label class="lab_param">系统:</label>
+		                            	<div class="select_opt inp_width">
+				                            <select class="form-control">
+												  <option>Android</option>
+												  <option>IOS</option>								
+											</select>
+				                        </div>
+		                            </div>
+		                            <div class="item_param">
+		                            	<label class="lab_param">电池容量:</label>
+		                            	<input type="text" class="form-control inp_width" id="goodnote"placeholder="" v-model="goodnote">
+		                            </div>
+		                            
+		                        </div>
+		                    </div>
+
+		                    <div class="form-group">
+		                    	<label class="col-sm-2 control-label">商品相册</label>
+		                    	<div class="col-sm-10">
+		                    		<div class="hello">
+		                    			<div class="upload">
+			                    			<div class="upload_warp">
+			                    				<div class="upload_warp_left" @click="fileClick">
+			                    					<img src="../img/upload.png">
+			                    				</div>
+			                    				<div class="upload_warp_right">								或者将文件拖到此处
+			                    				</div>
+			                    			</div>
+			                    			<div class="upload_warp_text">
+			                    				选中{{imgList.length}}张文件，共{{bytesToSize(this.size)}}
+			                    			</div>
+			                    		</div>
+			                    		<input @change="fileChange($event)" type="file" id="upload_file" multiple style="display: none" />
+			                    		<div class="upload_warp_img" v-show="imgList.length!=0">
+			                    			<div class="upload_warp_img_div" v-for="(item,index) of imgList">
+			                    				<div class="upload_warp_img_div_top">          					
+		                    						<div class="upload_warp_img_div_text">
+		                    							{{item.file.name}}
+		                    						</div>	
+		                    						<img src="../img/del.png" class="upload_warp_img_div_del" @click="fileDel(index)">	
+			                    				</div>
+			                    				<img :src="item.file.src">
+			                    			</div>
+			                    		</div>
+		                    		</div>
+		                    		
+		                    	</div>
+							    
+							</div>
+
+							<div class="form-group">
+		                        <div style="text-align: center">
+		                        	<button type="submit" class="btn btn-default btn-sm" @click="nextStep3_2">上一步，填写商品属性</button>
+		                            <button type="submit" class="btn btn-success btn-sm" @click="upProInfo">完成，提交商品</button>
+		                        </div>
+		                    </div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</template>
+
+	
+
+	<!-- <template id="temp1">
+        <div class="dialog">
+            <div class="dialog_mask"></div>
+            <div class="dialog_container">
+                <div class="dialog_content">
+                    <div class="dialog_content_top">你是否要删除此项？</div>
+                    <div class="dialog_btn">            
+                        <a href="javascript:;" class="btn" @click="close">取消</a>
+                        <a href="javascript:;" class="btn" @click="deletecc">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template> -->
+
+
+
+    <template id="dialog">
+        <div class="dialog" v-if="showDialog" @click="hidePanel">
+            <div class="dialog_mask" id="dialogMask"></div>
+            <div class="dialog_container" id="dialogContainer">
+                <div class="dialog_content">
+                    <div class="dialog_content_top" v-text="msg">提示内容</div>
+                    <div class="dialog_btn">
+                        <a v-if="type==1" href="javascript:;" class="btn" @click="close">确定</a>
+                        <a v-if="type==2" href="javascript:;" class="btn" @click="close">取消</a>
+                        <a v-if="type==2" href="javascript:;" class="btn" @click="deletecc">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</body>
+<script type="text/javascript">
+	Vue.component('v-dialog', {
+		template: '#dialog',
+		// data:function() {
+		// 	return{
+		// 		showDialog:true
+		// 	}
+		// },
+		// props: {
+		// 	msg:String,
+		// 	showDialog: {
+		// 		type: Boolean, 
+		// 		default:false
+		// 	},
+		// 	type:Number
+		//},
+		props:['showDialog','msg','type'],
+		methods: {
+			close:function() {
+				//this.$emit('update:visible', false) // 传递关闭事件
+				//this.showDialog = !this.showDialog
+				vm.showDialog = false
+			},
+			hidePanel:function(event){
+				var dom = document.getElementById("dialogContainer");
+				if (dom) {
+					if(!dom.contains(event.target)){
+						vm.showDialog = false
+					}
+				}
+			},
+			deletecc(e) {
+				if (this.visible) {
+					document.querySelector('.dialog').contains(e.target) ? '' : this.close(); // 判断点击的落点在不在dialog对话框内，如果在对话框外就调用this.close()方法关闭对话框
+			}
+		}
+	}
+});
+
+Vue.component('v-promanageadd3',{
+	template:"#proManageAdd3",
+	data:function(){
+		return{
+			colorNameInp:'',
+			goodnote:'',
+			imgList:[],
+			size:0
+		}
+	},
+	props:['colorList'],
+	methods:{
+		addColor:function(){
+			this.$emit("func",this.colorNameInp);
+		},
+		deleteColor:function(arg){
+			this.$emit("funcdel",arg);
+		},
+		fileClick() {
+            document.getElementById('upload_file').click();
+      	},
+      	fileChange(el) {
+	        if (!el.target.files[0].size) return;
+	        this.fileList(el.target);
+	        el.target.value = ''
+	    },
+	    fileList(fileList) {
+            let files = fileList.files;
+            for (let i = 0; i < files.length; i++) {
+               //判断是否为文件夹
+               if (files[i].type != '') {
+                   this.fileAdd(files[i]);
+               } else {
+                   //文件夹处理
+                   this.folders(fileList.items[i]);
+               }
+          	 }
+    	},
+    	//文件夹处理
+        folders(files) {
+              let _this = this;
+              //判断是否为原生file
+              if (files.kind) {
+                  files = files.webkitGetAsEntry();
+              }
+              files.createReader().readEntries(function (file) {
+                  for (let i = 0; i < file.length; i++) {
+                      if (file[i].isFile) {
+                          _this.foldersAdd(file[i]);
+                      } else {
+                          _this.folders(file[i]);
+                      }
+                  }
+              })
+        },
+        foldersAdd(entry) {
+              let _this = this;
+              entry.file(function (file) {
+                  _this.fileAdd(file)
+              })
+        },
+        fileAdd(file) {
+              //总大小
+              this.size = this.size + file.size;
+              //判断是否为图片文件
+              if (file.type.indexOf('image') == -1) {
+                  file.src = 'wenjian.png';
+                  this.imgList.push({
+                      file
+                  });
+              } else {
+                  let reader = new FileReader();
+                  reader.vue = this;
+                  reader.readAsDataURL(file);
+                  reader.onload = function () {
+                      file.src = this.result;
+                      this.vue.imgList.push({
+                          file
+                      });
+                  }
+              }
+        },
+        fileDel(index) {
+              this.size = this.size - this.imgList[index].file.size;//总大小
+              this.imgList.splice(index, 1);
+        },
+        bytesToSize(bytes) {
+              if (bytes === 0) return '0 B';
+              let k = 1000, // or 1024
+                  sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                  i = Math.floor(Math.log(bytes) / Math.log(k));
+              return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+        },
+        dragenter(el) {
+              el.stopPropagation();
+              el.preventDefault();
+        },
+        dragover(el) {
+              el.stopPropagation();
+              el.preventDefault();
+        },
+        drop(el) {
+              el.stopPropagation();
+              el.preventDefault();
+              this.fileList(el.dataTransfer);
+        },
+        nextStep3_2() {
+
+        },
+        upProInfo(){
+        	
+        }
+
+	}
+});
+
+var vm = new Vue({
+	el:'#app',
+	data:{
+		// msg:'',
+		// showDialog:false,
+		// type:1,
+		// amount:'',
+		// message: {
+  //           show: false,
+  //           type: 'c-message--success',
+  //           status: 'messageFadeInDown',
+  //           text: '操作成功',
+  //           time: 2000,
+  //           timeout: null
+  //       },
+  //       id:'',
+  //       imgDataUrl:'',
+  //       src:''
+  		   colorName:'',
+  		   colorList:[],
+
+	},
+	methods:{
+		addColor:function(arg){
+			console.log("arg------------>" + arg);
+			this.colorList.push({"colorName":arg});
+		},
+		deleteColor:function(arg){
+			console.log("arg数组下标------------>" + arg);
+			this.colorList.splice(arg,1);
+		}
+		//submit:function(){
+			//弹出对话框组件
+            // if(!this.isLogin){//未登录
+            //     this.msg = "请先去登录再领取金额";
+            //     this.showDialog = !this.showDialog;
+            //     this.type = 2;
+            //     return;
+            // }
+            // if(true){
+            //     if(this.amount<1 || this.amount>1000){
+            //         this.msg = "输入金额不能低于1元大于1000";
+            //         this.showDialog = !this.showDialog;
+            //         this.type = 1;
+            //     }else{
+            //         this.msg = "领取成功，请在账户中心查看";
+            //         this.showDialog = !this.showDialog;
+            //         this.type = 1;
+            //     }
+            // }else{
+            //     this.msg = "领取金额不能为空";
+            //     this.showDialog = !this.showDialog;
+            //         this.type = 1;
+            // }
+
+  //           this.msg = "领取成功，请在账户中心查看";
+  //           this.showDialog = !this.showDialog;
+  //           this.type = 2;
+		// },
+		// Alert: function (text, type, time) {
+  //           vm.message.status = '';
+  //           clearTimeout(vm.timeout)
+  //           vm.message.text = (typeof text == 'string') && text ? text : '我是默认';
+  //           vm.message.time = time ? time : 2000;
+  //           vm.message.type = 'c-message--' + (type ? type : 'info');
+  //           vm.message.show = true;
+  //           vm.message.status = 'messageFadeInDown';
+  //           vm.timeout = setTimeout(function () {
+  //               vm.message.status = 'messageFadeOutUp'
+  //               // event.target.addEventListener('transitionend', function () {
+  //               //     alert('动画结束了！');
+  //               // }, false)
+  //           }, vm.message.time)
+  //       },
+  //       msgManage:function(){
+  //       	vm.Alert("添加成功","success",2000);
+  //       },
+  //       getObjectURL:function (file) {
+  //      		var url = window.webkitURL.createObjectURL(file);
+        	
+		//      var url = null ;
+		//      if (window.createObjectURL!=undefined) { // basic
+		//         url = window.createObjectURL(file) ;
+		//      }else if (window.webkitURL!=undefined) { // webkit or chrome
+		//         url = window.webkitURL.createObjectURL(file) ;
+		//      }else if (window.URL!=undefined) { // mozilla(firefox)
+		//         url = window.URL.createObjectURL(file) ;
+		//      }
+		//      console.log("url:" + url);
+		//      $("img").attr("src", url);
+		//      return url ;
+	      
+	 //    },
+  //       preview:function(e){
+	 //      var files = document.getElementById("fileImg").files[0]
+		//   var img = document.getElementById("img");
+	 //      var reader = new FileReader();
+	 //      reader.readAsDataURL(files);
+	 //      reader.onload = function(){
+	 //      	console.log("this.result:"+ this.result);
+	 //      	img.src = this.result;
+	 //      	vm.imgDataUrl = this.result;
+	 //      	console.log("图片路径blob:" + dataURItoBlob(this.result));
+	 //      }
+	      
+	      //console.log("图片路径:" + dataURItoBlob(vm.imgDataUrl));
+
+	      // vm.imgDataUrl =vm.getObjectURL(files)
+	      // //this.$emit('sendImgUrl',this.imgDataUrl,this.id)
+	      // console.log("files:" + files);
+	      // console.log("图片路径:" + vm.imgDataUrl);
+	      //console.log("图片路径:" + files.path);
+	      
+
+
+	      // var file = e.target.files[0];
+       //      if(file) {
+       //          this.file = file
+       //          console.log(this.file)
+       //          var reader = new FileReader()
+       //          var that = this
+       //          reader.readAsDataURL(file)
+       //          reader.onload= function(e){
+       //              // 这里的this 指向reader
+       //              that.imgDataUrl = this.result
+       //          }
+       //          console.log("图片路径:" + that.imgDataUrl);
+       //      }
+
+	      
+
+
+	    //}
+
+	}
+});
+</script>
+</html>

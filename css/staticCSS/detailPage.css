@@ -1,0 +1,564 @@
+.shoppingCart{
+    color: #da1026;
+}
+
+.navbar #header_nav {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+.top_line{
+    background-color: #333;
+    height: 40px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+section.banner {
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+section.banner img {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+
+section.property {
+    width: 990px;
+    margin: 0 auto;
+}
+
+section.property .gallery {
+    width: 460px;
+    height: 560px;
+    float: left;
+    padding: 0 20px;
+}
+
+section.property .gallery .pic-border {
+    border: 1px solid rgba(0, 0, 0, .05);
+    width: 420px;
+    height: 420px;
+}
+
+section.property .gallery .pic-border img {
+    width: 415px;
+    height: 415px;
+    margin: 2px auto;
+    display: block;
+}
+
+section.property .gallery .pic-ls {
+    height: 60px;
+    margin: 20px auto;
+}
+
+section.property .gallery .pic-ls img {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-left: 18px;
+    border: 2px solid transparent;
+}
+
+section.property .gallery .pic-ls .selected {
+    border-color: #000000;
+}
+
+section.property .detail {
+    margin-left: 460px;
+    height: 560px;
+    color: #999;
+}
+
+section.property .detail .product-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+}
+
+section.property .detail .price {
+    background: url("../../img/product_back.png");
+    width: 510px;
+    height: 175px;
+    padding: 10px 5px;
+    margin-top: 10px;
+}
+
+section.property .sales {
+    color: #666;
+}
+
+section.property .sales img {
+    width: 50px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+section.property .left {
+    width: 69px;
+    display: inline-block;
+}
+
+section.property .top-line {
+    margin-top: 10px;
+    line-height: 20px;
+}
+
+section.property .top-line-cs {
+    line-height: 20px;
+}
+
+section.property .o-price-num {
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #666;
+}
+
+section.property .o-price-num-cs {
+    font-size: 14px;
+    color: #666;
+}
+
+
+section.property .yen {
+    font-size: 16px;
+    color: #FF0036;
+}
+
+section.property .s-price {
+    position: relative;
+    top: -5px;
+}
+
+section.property .s-price-num {
+    font-size: 30px;
+    color: #FF0036;
+    font-weight: bolder;
+}
+
+section.property .history {
+    margin-top: 10px;
+    border-top: 1px dotted #c9c9c9;
+    border-bottom: 1px dotted #c9c9c9;
+    line-height: 20px;
+    height: 36px;
+    padding: 8px 0;
+    width: 510px;
+}
+
+section.property .history .item {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+    display: inline-block;
+    border-left: 1px solid #c9c9c9;
+}
+
+section.property .history:first-child {
+    border: none;
+}
+
+section.property .history .item em {
+    color: #FF0036;
+    font-style: normal;
+    font-weight: bold;
+}
+
+section.property .history .t-score em {
+    color: #280;
+}
+
+section.property .product-num {
+    margin-top: 15px;
+    height: 50px;
+    width: 510px;
+}
+
+section.property .product-num input {
+    width: 30px;
+    border: solid 1px #a7a6ab;
+    height: 25px;
+    display: inline-block;
+    vertical-align: center;
+}
+
+section.property .arrow {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+}
+
+section.property .arrow .arrow-png {
+    display: block;
+    width: 13px;
+    height: 9px;
+    padding: 2px;
+    border: 1px solid #a7a6ab;
+}
+
+section.property .arrow .arrow-png img {
+    display: block;
+}
+
+section.property .arrow .updown-middle {
+    display: block;
+    height: 3px;
+    width: 20px;
+}
+
+section.property button {
+    width: 180px;
+    height: 40px;
+    font-size: 16px;
+}
+
+section.property button.buy-button {
+    border: 1px solid #FF0036;
+    color: #FF0036;
+    background-color: #ffeded;
+    position: relative;
+    left: 40px;
+}
+
+section.property button.car-button {
+    background-color: #ff0036;
+    color: #fff;
+    border: 1px solid #ff0036;
+    position: relative;
+    left: 45px;
+}
+
+section.property button.car-button span {
+    margin-right: 5px;
+}
+
+section.property .service {
+    position: relative;
+    top: 175px;
+}
+
+section.property .service span.left {
+    color: #999;
+}
+
+section.property .service span {
+    margin-right: 60px;
+    color: #666;
+}
+
+main.product-content {
+    width: 990px;
+    padding-left: 200px;
+    margin: 0 auto 20px;
+}
+
+main.product-content .product-bar {
+    border: 1px solid #DFDFDF;
+    height: 49px;
+}
+
+main.product-content .product-bar .product-select {
+    display: block;
+    float: left;
+    color: #333333;
+    line-height: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+main.product-content .product-select a {
+    position: relative;
+    border-right: 1px dotted #D2D2D2;
+    padding: 0 20px;
+    color: #000;
+    text-decoration: none;
+}
+
+main.product-content .product-select.selected {
+    border-right: 1px dotted #cfbfb1;
+    border-left: 1px dotted #cfbfb1;
+    border-top: 1px solid #FF0036;
+    color: #FF0036;
+    position: relative;
+    top: -1px;
+    left: -1px;
+    height: 49px;
+}
+
+main.product-content .product-select.selected a {
+    color: #FF0036;
+    font-weight: 700;
+    border: none;
+}
+
+main.product-content .product-select.selected:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    border: 5px solid transparent;
+    border-top-color: #FF0036;
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    margin-left: -5px;
+}
+
+main.product-content .product-comment-number {
+    color: #38b;
+}
+
+main.product-content .product-top {
+    border: 1px solid #e6e6e6;
+    padding: 20px 10px 0 20px;
+    margin-bottom: 20px;
+}
+
+main.product-content .product-key-title {
+    line-height: 22px;
+    color: #999;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+main.product-content .product-key {
+    overflow: hidden;
+}
+
+main.product-content .product-key li {
+    float: left;
+    width: 240px;
+    height: 18px;
+    overflow: hidden;
+    color: #666;
+    display: block;
+    margin: 0 0 10px;
+}
+
+main.product-content .product-content-part img {
+    max-width: 790px;
+}
+
+main.product-content table.comment tr {
+    border-bottom: 1px solid #e3e3e3;
+}
+
+main.product-content table.comment td {
+    padding: 10px 0;
+    word-wrap: break-word;
+    word-break: break-all;
+    line-height: 19px;
+    overflow: hidden;
+}
+
+main.product-content table.comment td.comment-left {
+    width: 680px;
+}
+
+main.product-content table.comment td.comment-right {
+    width: 100px;
+    text-align: center;
+}
+
+main.product-content table.comment span.date {
+    margin-top: 5px;
+    display: block;
+    color: #ccc;
+}
+
+main.product-content table.comment span.annoy {
+    color: #999;
+}
+
+/*E.购物车页面*/
+main.cart {
+    width: 990px;
+    margin: 20px auto;
+}
+
+main.cart .sum-top {
+    overflow: hidden;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+main.cart .sum-top .cart-sum-price-small, main.cart .sum-top .yen-small {
+    color: #FF0036;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+main.cart .sum-top .yen-small {
+    margin-left: 5px;
+}
+
+main.cart .sum-top .crate-order-small {
+    background: #aaa;
+    border: none;
+    color: white;
+    width: 55px;
+    line-height: 25px;
+    cursor: not-allowed;
+}
+
+main.cart .sum-bottom {
+    background: #E5E5E5;
+    line-height: 50px;
+    margin: 20px 0;
+    color: #000;
+    padding-left: 20px;
+}
+
+main.cart .sum-bottom .crate-order-big {
+    border: none;
+    background: #aaa;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+main.cart .select-img {
+    position: relative;
+    top: -1px;
+    cursor: pointer;
+}
+
+main.cart .sum-bottom .cart-num {
+    color: #FF0036;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+main.cart .sum-bottom .sum-text {
+    margin-left: 25px;
+}
+
+main.cart .sum-bottom .yen-big {
+    margin-left: 10px;
+    color: #FF0036;
+}
+
+main.cart .sum-bottom .cart-sum-price-big {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FF0036;
+    margin-right: 5px;
+}
+
+main.cart table.cart-list {
+    width: 100%;
+}
+
+main.cart table.cart-list th, main.cart table.cart-list td {
+    padding: 20px;
+    font-weight: normal;
+    color: #3C3C3C;
+}
+
+main.cart table.cart-list th.item-price {
+    width: 150px;
+}
+
+main.cart table.cart-list .select-and-image {
+    width: 150px;
+}
+
+main.cart table.cart-list .delete-button {
+    width: 50px;
+}
+
+main.cart table.cart-list .select-img {
+    margin-right: 5px;
+}
+
+main.cart table.cart-list .cart-item-jpg {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+}
+
+main.cart table.cart-list .item-name {
+    vertical-align: top;
+    position: relative;
+}
+
+main.cart table.cart-list .cart-item-title {
+    color: #3c3c3c;
+}
+
+main.cart table.cart-list .cart-item-title:hover {
+    color: #FF0036;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+main.cart table.cart-list .cart-item-title-bottom {
+    position: absolute;
+    bottom: 20px;
+    height: 20px;
+}
+
+main.cart .cart-item-old-price {
+    display: block;
+    text-decoration: line-through;
+    color: #9c9c9c;
+}
+
+main.cart .cart-item-now-price {
+    display: block;
+    font-weight: 700;
+    color: #3c3c3c;
+}
+
+main.cart .cart-change {
+    border: 1px solid #e5e5e5;
+    width: 66px;
+    height: 25px;
+    background: #f0f0f0;
+}
+
+main.cart .cart-change a {
+    text-decoration: none;
+}
+
+main.cart .cart-change-button {
+    width: 17px;
+    display: inline-block;
+    text-align: center;
+    height: 24.3px;
+    border: 1px solid transparent;
+    line-height: 23px;
+    position: relative;
+    top: -1px;
+}
+
+main.cart .cart-change-button:hover {
+    border: 1px solid #FF0036;
+}
+
+main.cart input {
+    width: 30px;
+    border: 1px solid #aaa;
+    height: 24px;
+    position: relative;
+    top: -1px;
+    margin: 0;
+    text-align: center;
+}
+
+main.cart .cart-item-sum {
+    font-weight: 700;
+    color: #FF0036;
+    font-size: 14px;
+}
+
+main.cart .delete-button {
+    color: #3c3c3c;
+}

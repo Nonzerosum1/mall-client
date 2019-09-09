@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>订单管理</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+    <script src="../js/common/tools.js"></script>
+    <script src="../vue2517.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/manageOrder.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-default clearfix">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <a class="navbar-brand" href="#">商城后台</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav">
+	                <li class="${light==1?'active':''}"><a  href="../category/list">分类管理</a></li>
+	                <li class="${light==2?'active':''}"><a  href="../user/list">用户管理</a></li>
+	                <li class="${light==3?'active':''}"><a href="../order/list">订单管理</a></li>
+	                <li class="${light==4?'active':''}"><a href="../config/edit">网站设置</a></li>
+	            </ul>
+	            <ul class="nav navbar-nav navbar-right">
+	                <li class=""><a href="../../../" target="_blank" >网站前台</a></li>
+	            </ul>
+	        </div><!--/.nav-collapse -->
+	    </div>
+	</nav>
+	
+	<div class="container" >
+	    <ol class="breadcrumb">
+	        <li>订单管理</li>
+	    </ol>
+	    <table class="table">
+	        <thead>
+	        <tr>
+	            <th scope="col">#</th>
+	            <th scope="col">状态</th>
+	            <th scope="col">订单金额</th>
+	            <th scope="col">商品数量</th>
+	            <th scope="col">买家名称</th>
+	            <th scope="col">创建时间</th>
+	            <th scope="col">支付时间</th>
+	            <th scope="col">发货时间</th>
+	            <th scope="col">确认收货时间</th>
+	            <th scope="col" width="120px">操作</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+
+	        <c:forEach items="${orders}" var="o" varStatus="vs">
+	            <tr>
+	                <th scope="row">${o.id}</th>
+	                <td>${o.statusText}</td>
+	                <td>${o.sum}</td>
+	                <td>${o.totalNumber}</td>
+	                <td>${o.user.name}</td>
+	                <td><fmt:formatDate value="${o.createDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+	                <td><fmt:formatDate value="${o.payDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+	                <td><fmt:formatDate value="${o.deliverDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+	                <td><fmt:formatDate value="${o.confirmDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+	                <td>
+	                    <button class="btn btn-primary btn-xs detail-btn">查看详情</button>
+	                    <c:if test="${o.statusEnum == 'waitDeliver'}">
+	                        <a href="deliver?oid=${o.id}">
+	                            <button class="btn btn-primary btn-xs">发货</button>
+	                        </a>
+	                    </c:if>
+	                </td>
+	            </tr>
+	            <tr  style="display: none">
+	                <td colspan="10" >
+	                    <div class="panel panel-default" style="width: 600px;margin:0 auto">
+	                        <div class="panel-heading">订单详情</div>
+	                        <div class="panel-body">
+	                            <table class="table table-striped">
+	                                <c:forEach items="${o.orderItems}" var="item" varStatus="vs">
+	                                <tr>
+	                                    <td><img width="40px" height="40px" src="../../../${productImgDir}${item.product.image.path}"></td>
+	                                    <td>${item.product.name}</td>
+	                                    <td>${item.number}个</td>
+	                                    <td>单价${item.product.nowPrice}元</td>
+	                                </tr>
+	                                </c:forEach>
+	                            </table>
+	                        </div>
+	                    </div>
+	                </td>
+	            </tr>
+	        </c:forEach>
+	        </tbody>
+	    </table>
+	</div>
+
+	<div class="container text-center" >
+	    <nav aria-label="..." >
+	        <ul class="pagination">
+
+	            <li class="page-item ${pagination.hasPrevious ? '':'disabled'}">
+	                <a class="page-link" href="?start=0${pagination.param}" tabindex="-1">«</a>
+	            </li>
+	            <li class="page-item ${pagination.hasPrevious ? '':'disabled'}">
+	                <a class="page-link" href="?start=${pagination.start-pagination.count<0?0:pagination.start-pagination.count}${pagination.param}" tabindex="-1">‹</a>
+	            </li>
+
+	            <c:forEach begin="0" end="${pagination.totalPage}" varStatus="vs">
+	            <li class="page-item ${vs.index * pagination.count == pagination.start ? 'active':''}">
+	                <a class="page-link" href="?start=${vs.index*pagination.count}${pagination.param}">
+	                        ${vs.count}
+	                </a>
+	            </li>
+	            </c:forEach>
+
+	            <li class="page-item" ${pagination.hasNext ? '':'disabled'}>
+	                <a class="page-link" href="?start=${pagination.start+pagination.count}${pagination.param}">›</a>
+	            </li>
+	            <li class="page-item" ${pagination.hasNext ? '':'disabled'}>
+	                <a class="page-link" href="?start=${pagination.lastPage}${pagination.param}">»</a>
+	            </li>
+	        </ul>
+	    </nav>
+	</div>
+
+	<div class="footer">
+	</div>
+
+</body>
+<script src="../js/dynamicJS/manageOrder.js"></script>
+</html>

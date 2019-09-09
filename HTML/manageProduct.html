@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>分类管理 - 产品管理</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+    <script src="../js/common/tools.js"></script>
+    <script src="../vue2517.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/manageProduct.css">
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+	<div id="app">
+		<v-header></v-header>
+
+		<v-promanageshow :pro-type="proType" :products="products" @func="deletePro"></v-promanageshow>
+
+		<v-contpage :page-count="pageCount"></v-contpage>
+
+		<!--删除时弹出确认框-->
+		<v-dialog :show-dialog="showDialog" :msg="msg" :type="type" :cate="cate" :delflag="delflag"></v-dialog>
+
+		<!--添加成功时消息提示-->
+		<div class="c-message" :class="message.status" v-show="message.show">
+	        <div class="c-message--main">
+	            <i class="c-message--icon" :class="message.type"></i>
+	            <div class="c-message--tip">{{message.text}}</div>
+	        </div>
+	    </div>
+		
+	</div>
+
+	<template id="header">
+		<nav class="navbar navbar-default clearfix">
+		    <div class="container">
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="#">商城后台</a>
+		        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		            <ul class="nav navbar-nav">
+		                <li class=""><a href="#" @click="gotoCateManage">分类管理</a></li>
+		                <li class=""><a href="#">用户管理</a></li>
+		                <li class=""><a href="#">订单管理</a></li>
+		                <li class=""><a href="#">网站设置</a></li>
+		            </ul>
+		            <ul class="nav navbar-nav navbar-right">
+		                <li class=""><a href="../../../" target="_blank" >网站前台</a></li>
+		            </ul>
+		        </div><!--/.nav-collapse -->
+		    </div>
+		</nav>
+	</template>
+	
+
+	<!--商品管理组件-->
+    <template id="proManageShow">
+    	<div class="container" >
+    		<div>
+    			<ol class="breadcrumb col-sm-10">
+			        <li><a href="#">所有分类</a></li>
+			        <li>{{proType}}</li>
+			        <li>产品管理</li>
+			    </ol>
+			    <div class="col-sm-2">
+			    	<button type="button" class="btn btn-primary" @click="addProduct">添加商品</button>
+			    </div>
+    		</div>
+		    
+		    <table class="table table-hover table-striped">
+		        <thead>
+		        <tr>
+		            <th scope="col">#</th>
+		            <th scope="col">图片</th>
+		            <th scope="col">产品名称</th>
+		            <th scope="col">产品成色</th>
+		            <th scope="col">原价格</th>
+		            <th scope="col">现价格</th>
+		            <th scope="col">库存</th>
+		            <th scope="col">图片管理</th>
+		            <th scope="col">设置属性值</th>
+		            <th scope="col">编辑</th>
+		            <th scope="col">删除</th>
+		        </tr>
+		        </thead>
+		        <tbody>
+			        <tr v-for="(proItem,index) in products">
+		                <th scope="row">{{index+1}}</th>
+		                <td><img :src="proItem.goodImg" height="30px"></td>
+		                <!-- <td><img src="../img/4.png" height="30px"></td> -->
+
+		                <td>{{proItem.goodName}}</td>
+		                <td>{{proItem.goodDesc}}</td>
+		                <td>{{proItem.originalPrice}}</td>
+		                <td>{{proItem.goodPrice}}</td>
+		                <td>{{proItem.goodStock}}</td>
+		                <td>
+		                	<a href="#" >
+		                		<!-- <span class="glyphicon glyphicon-picture"></span> -->
+		                		<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal_pic" @click.prevent="picManage(proItem.goodId)">
+								  <span class="glyphicon glyphicon-picture"></span>
+								</button>
+		            	    </a>
+		           		 </td>
+		                <td>
+		                	<a href="#">
+		                		<!-- <span class="glyphicon glyphicon-th-list"></span> -->
+		                		<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal_attr" @click.prevent="attrManage(proItem.goodId)">
+								  <span class="glyphicon glyphicon-th-list"></span>
+								</button>
+		                	</a>
+		                </td>
+		                <td>
+		                	<a href="#">
+		                		<!-- <span class="glyphicon glyphicon-edit"></span> -->
+		                		<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal_edit" @click.prevent="editManage(proItem.goodId)">
+								  <span class="glyphicon glyphicon-edit"></span>
+								</button>
+		                	</a>
+		                </td>
+		                <td>
+		                	<a href="" class="delete-button" >
+		                		<!-- <span class="glyphicon glyphicon-trash"></span> -->
+		                		<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal_edit" @click.prevent="deletePro(proItem.goodId)">
+								  <span class="glyphicon glyphicon-trash"></span>
+								</button>
+		                	</a>
+		                </td>
+		            </tr>
+		        </tbody>
+
+		        <!-- Modal -->
+				<div class="modal fade" id="myModal_pic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">修改图片</h4>
+				      </div>
+				      <div class="modal-body">
+				        <div class="hello">
+                			<div class="upload">
+                    			<div class="upload_warp">
+                    				<div class="upload_warp_left" @click="fileClick">
+                    					<img src="../img/upload.png">
+                    				</div>
+                    				<div class="upload_warp_right">								或者将文件拖到此处
+                    				</div>
+                    			</div>
+                    			<div class="upload_warp_text">
+                    				选中{{imgList.length}}张文件，共{{bytesToSize(this.size)}}
+                    			</div>
+                    		</div>
+                    		<input @change="fileChange($event)" type="file" id="upload_file" multiple style="display: none" />
+                    		<div class="upload_warp_img" v-show="imgList.length!=0">
+                    			<div class="upload_warp_img_div" v-for="(item,index) of imgList">
+                    				<div class="upload_warp_img_div_top">          					
+                						<div class="upload_warp_img_div_text">
+                							{{item.file.name}}
+                						</div>	
+                						<img src="../img/del.png" class="upload_warp_img_div_del" @click="fileDel(index)">	
+                    				</div>
+                    				<img :src="item.file.src">
+                    			</div>
+                    		</div>
+                		</div>
+
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				        <button type="button" class="btn btn-primary" @click="updatePic">上传</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+		    </table>
+		</div>
+    </template>
+
+    <template id="contPage">
+		<div class="container text-center" >
+		    <nav aria-label="..." >
+		        <ul class="pagination">
+
+		            <li class="page-item ${pagination.hasPrevious ? '':'disabled'}">
+		                <a class="page-link" href="?start=0${pagination.param}" tabindex="-1">«</a>
+		            </li>
+		            <li class="page-item ${pagination.hasPrevious ? '':'disabled'}">
+		                <a class="page-link" href="?start=${pagination.start-pagination.count<0?0:pagination.start-pagination.count}${pagination.param}" tabindex="-1">‹</a>
+		            </li>
+
+		            <li class="page-item ${vs.index * pagination.count == pagination.start ? 'active':''}">
+		                <a class="page-link" href="#">
+		                        {{1}}
+		                </a>
+		            </li>
+		            
+		            <li class="page-item">
+		                <a class="page-link" href="?start=${pagination.start+pagination.count}${pagination.param}">›</a>
+		            </li>
+		            <li class="page-item">
+		                <a class="page-link" href="?start=${pagination.lastPage}${pagination.param}">»</a>
+		            </li>
+		        </ul>
+		    </nav>
+		</div>
+	</template>
+
+	<!--对话框提示组件-->
+	<template id="dialog">
+        <div class="dialog" v-if="showDialog" @click="hidePanel">
+            <div class="dialog_mask" id="dialogMask"></div>
+            <div class="dialog_container" id="dialogContainer">
+                <div class="dialog_content">
+                    <div class="dialog_content_top" v-text="msg">提示内容</div>
+                    <div class="dialog_btn">
+                        <a v-if="type==1" href="javascript:;" class="btn" @click="close">确定</a>
+                        <a v-if="type==2" href="javascript:;" class="btn" @click="close">取消</a>
+                        <a v-if="type==2" href="javascript:;" class="btn" @click.prevent="deleteCateTemp(cate,delflag)">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</body>
+<script src="../js/dynamicJS/manageProduct.js"></script>
+</html>

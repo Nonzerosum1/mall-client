@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/common/tools.js"></script>
+    <script src="../js/common/md5.js"></script>
+    <script src="../vue2517.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/login.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="form row">
+            <div class="form-horizontal">
+                <div class="form-hrader border_test">
+                    <h3 class="form-title head">欢迎回到校园二手交易网</h3>
+                </div>
+                <div class="form-hrader">
+                    <h3 class="form-title">登录</h3>  
+                </div>
+                
+                <div id="flash-container">
+                    <div class="flash flash-full flash-error">
+                        <div id="container-error">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-body mt-3">
+                    <label>用户名</label>
+                    <input type="text" class="form-control input-block" id="trueName" 
+                     autofocus="autofocus" maxlength="20" v-model="userName"/>
+                     
+                    <span id="yanz"></span>
+                    <label>密码</label>
+                    <input type="password" class="form-control form-control input-block"  id="password" 
+                    maxlength="8" v-model="password"/>
+                    
+                    <input type="submit" class="btn btn-primary btn-block" id="loginBtn" 
+                     value="登录 " @click="login"/>
+                    <span id="tipMsg" style="font-size: 12px; color: red;"></span>   
+                </div>  
+                    
+                <p class="create-account mt-3">
+                    New to soft?
+                    <a href="http://localhost:8080/graduClient/HTML/register.html" id="register_btn" class="">创建账号</a>
+                </p>
+            
+        
+            </div>
+        </div>  
+    </div>
+</body>
+<script src="../js/dynamicJS/login.js"></script>
+</html>

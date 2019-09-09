@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>关于我们</title>
+    
+    <script src="../js/common/tools.js"></script>
+    <script src="../vue2517.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/staticCSS/public.css">
+    <link rel="stylesheet" type="text/css" href="../css/cssAbout/style.css"/>
+</head>
+<body>
+<!---start-wrap---->
+<!---start-header---->
+<div id="app">
+<div class="header">
+    <!-- <div class="wrap"> -->
+        <!---start-logo---->
+
+        <!---End-logo---->
+        <!---start-top-nav---->
+        <!-- <div class="top-nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li class="active"><a href="about.html">关于我们</a></li>
+                <li><a href="services.html">服务</a></li>
+                <li><a href="plans.html">计划</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </div>
+        <div class="clear"> </div> -->
+        
+        <!---End-top-nav---->
+    <!-- </div> -->
+    <!---End-header---->
+    <nav class="navbar">
+            <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="../img/images/logo.PNG" alt="Brand" width="35" height="35">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="header_nav">
+                <ul class="list-inline list-styled center nav navbar-nav">
+                    <li class="active"><a href="#" @click.prevent="indexHome">首页 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">企业回收</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">网址导航</a></li>
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                         <a href="#" @click.prevent="gotoShopCart" class="shoppingCart">
+                            <i class="sc_count">9</i>
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                             &nbsp;购物车
+                        </a>
+                    </li>
+                    <li v-show="topinfo.isRegister"><a href="#">免费注册</a></li>
+                    <li v-show="topinfo.isLogin"><a href="#" @click="login">登录</a></li>
+                    <li v-show="topinfo.isShowName" @mouseover="infoShow" @mouseleave="infoHid"><a href="#" target="_blank">欢迎您：{{topinfo.nickName}}</a></li>  
+                </ul>
+
+                <div class="person_info" v-show="perInfo==true" @mouseover="infoShow" @mouseleave="infoHid">
+                    <ul class="person_items">
+                        <li class="person_li"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;个人中心</a></li>
+                        <li class="person_li"><a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;账号管理</a></li>
+                        <!-- <li><a href="#">Something else here</a></li> -->
+                        <li role="separator" class="divider person_li"></li>
+                        <li class="person_li"><a href="#" @click="signOut"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;退出登录</a></li>
+                    </ul>
+
+                </div>
+            </div><!-- /.container-fluid -->
+
+            
+        </nav>
+</div>
+<!---End-wrap---->
+<div class="clear"> </div>
+<!---start-content---->
+<div class="content">
+    <div class="wrap">
+        <div class="about-us">
+            <div class="about-header">
+                <h5> </h5><h3>关于我们</h3><h5> </h5>
+                <div class="clear"> </div>
+            </div>
+
+            <div class="about-info">
+
+                <p>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;我们主要提供一个大学生二手交易平台，通过线上线下开展，以线下为主要形式。我们主要收集需要出售的二手手机，还有一些其他的闲置物品，
+                    进行保管，分类以供需要购买二手手机的同学方便购买。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;另外,校园二手交易平台为在校学生提供一个供需平台，学生可以将不用的东西放到我们这里，也可以在固定的地方找到自己需要的东西，物美价廉，达到双赢，
+                    我们的宗旨是全心全意服务学生，方便学生。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;另外,校园二手交易平台为在校学生提供一个供需平台，学生可以将不用的东西放到我们这里，也可以在固定的地方找到自己需要的东西，物美价廉，达到双赢，
+                    我们的宗旨是全心全意服务学生，方便学生。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;另外,校园二手交易平台为在校学生提供一个供需平台，学生可以将不用的东西放到我们这里，也可以在固定的地方找到自己需要的东西，物美价廉，达到双赢，
+                    我们的宗旨是全心全意服务学生，方便学生。
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;另外,校园二手交易平台为在校学生提供一个供需平台，学生可以将不用的东西放到我们这里，也可以在固定的地方找到自己需要的东西，物美价廉，达到双赢，
+                    我们的宗旨是全心全意服务学生，方便学生。
+                </p>
+            </div>
+        </div>
+        <div class="clear"> </div>
+        <div class="specials">
+            <div class="specials-heading">
+                <h5> </h5><h3>最新消息</h3><h5> </h5>
+                <div class="clear"> </div>
+            </div>
+            <div class="clear"> </div>
+            <div class="specials-grids">
+                <div class="special-grid">
+                    <img src="../img/imagesAbout/1.jpg" title="image-name" />
+                    <a href="#">公益助学</a>
+                    <p>只需尽你的绵薄之力，把不需要的东西捐赠出来就可以为那些因贫穷而无法上学的孩子助力。</p>
+                </div>
+                <div class="special-grid">
+                    <img src="../img/imagesAbout/2.jpg" title="image-name" />
+                    <a href="#">旧机回收</a>
+                    <p>手机太旧，闲置在家无人使用，扔掉又太可惜。不用担心，我们来帮你解决！旧机回收，买新机！</p>
+                </div>
+                <div class="special-grid spe-grid">
+                    <img src="../img/imagesAbout/3.jpg" title="image-name" />
+                    <a href="#">了解更多</a>
+                    <p>想了解更多关于我们的信息，或者想加入我们的团队欢迎关注我们的微信公众号，每天不定时通知活动最新消息哦！</p>
+                </div>
+                <div class="clear"> </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="testmonials">
+        <div class="wrap">
+            <div class="testmonial-grid">
+                <h3>感言：</h3>
+                <p>&#34;校园二手交易平台为在校学生提供一个供需平台，学生可以将不用的东西放到我们这里，也可以在固定的地方找到自己需要的东西，物美价廉，达到双赢，
+                    我们的宗旨是全心全意服务学生，方便学生。&#34;</p>
+                <a href="#"> - Lorem ipsum</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!---End-content---->
+<div class="clear"> </div>
+<!---start-footer---->
+<div class="footer">
+    <div class="wrap">
+        <div class="footer-grids">
+            <div class="footer-grid">
+                <h3>感言</h3>
+                <p>
+                    我们的宗旨是全心全意服务学生，方便学生
+                    我们的宗旨是全心全意服务学生，方便学生
+                    我们的宗旨是全心全意服务学生，方便学生
+                    我们的宗旨是全心全意服务学生，方便学生
+                </p>
+            </div>
+            <div class="footer-grid">
+                <h3>最近的帖子</h3>
+                <ul>
+                    <li><a href="#">关于回收手机</a></li>
+                    <li><a href="#">关于公益助学</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-grid">
+                <h3>时事信息</h3>
+                <ul>
+                    <li><a href="#">回收手机</a></li>
+                    <li><a href="#">公益助学 </a></li>
+                    <li><a href="#">了解更多</a></li>
+                </ul>
+            </div>
+            <div class="footer-grid footer-lastgrid">
+                <h3>关于我们</h3>
+                <div class="footer-grid-address">
+                    <p>Tel.800-255-9999</p>
+                    <p>Fax: 1234 568</p>
+                    <p>Email:<a class="email-link" href="#">Eaxmplesite@Demo.com</a></p>
+                </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+<script type="text/javascript">
+var vm = new Vue({
+    el:"#app",
+    data:{
+        topinfo:{
+            isRegister:true,
+            isLogin:true,
+            isShowName:false,
+            nickName:''
+        },
+        cartnumtop:0,
+        perInfo:false
+    },
+    methods:{
+        infoShow(){
+            this.perInfo = true;
+        },
+        infoHid(){
+            this.perInfo = false;
+        },
+        signOut(){
+            localStorage.removeItem("password");
+            localStorage.removeItem("userName");
+            vm.getInfoInit();
+        },
+        login(){
+            window.location.href="file:///S:/vue/graduClient/HTML/login.html";
+        },
+        gotoShopCart(){
+            var userName = localStorage.getItem("userName");
+            var password = localStorage.getItem("password");
+            console.log("userName--------->" + userName);
+            console.log("password--------->" + password);
+            if (!isNull(userName) && !isNull(password)) {
+                vm.topinfo.isRegister = false;
+                vm.topinfo.isLogin = false;
+                vm.topinfo.isShowName = true;
+                vm.topinfo.nickName = userName;
+                window.location.href="file:///S:/vue/graduClient/HTML/shoppingCart.html";
+            }else {
+                vm.topinfo.isRegister = true;
+                vm.topinfo.isLogin = true;
+                vm.topinfo.isShowName = false;
+                vm.topinfo.nickName = "";
+                vm.Alert("登录后才能查看购物车哦！", "info", 2000);
+            }
+        },
+        indexHome(){
+            window.location.href="file:///S:/vue/graduClient/HTML/exmIndex.html";
+        }
+    }
+})
+</script>
+</html>
+

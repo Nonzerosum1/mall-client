@@ -1,0 +1,327 @@
+.top_line{
+    background-color: #333;
+    height: 40px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.navbar #header_nav {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.shoppingCart{
+    color: #da1026;
+}
+
+section.banner {
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+/*F.下单页面*/
+header.buy-header {
+    width: 990px;
+    margin: 15px auto;
+    height: 50px;
+}
+
+header.buy-header a {
+    position: relative;
+    top: 15px;
+}
+
+main.buy-page {
+    width: 990px;
+    margin: 50px auto;
+}
+
+main.buy-page .address-tip, main.buy-page .buy-list-tip {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+main.buy-page .address-table .left-column {
+    width: 100px;
+    text-align: right;
+    padding-right: 20px;
+    vertical-align: top;
+}
+
+main.buy-page .address-table .red-star {
+    color: #FF0036;
+}
+
+main.buy-page .address-table .right-column {
+    padding-bottom: 10px;
+}
+
+main.buy-page .address-table textarea {
+    border: 1px solid #AFAFAF;
+    width: 400px;
+}
+
+main.buy-page .address-table input {
+    border: 1px solid #AFAFAF;
+    width: 200px;
+    height: 20px;
+}
+
+main.buy-page .buy-list-tip {
+    margin: 20px 0;
+}
+
+main.buy-page .buy-list {
+    width: 100%;
+}
+
+main.buy-page .buy-list th {
+    color: #999999;
+    font-weight: normal;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+main.buy-page .buy-list .row-border td {
+    height: 3px;
+    background: #b2d1ff;
+    border-right: solid 2px #fff;
+}
+
+main.buy-page .buy-list th.shop-and-wangwang {
+    text-align: left;
+}
+
+main.buy-page .buy-list th.shop-and-wangwang .tmall-small-png {
+    width: 15px;
+}
+
+main.buy-page .buy-list th.shop-and-wangwang .market-link {
+    margin-left: 10px;
+    color: #000;
+}
+
+main.buy-page .buy-list th.shop-and-wangwang .market-link:hover {
+    text-decoration: underline;
+}
+
+main.buy-page .buy-list th.shop-and-wangwang .wangwang-small {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url("../../img/wangwang.gif") no-repeat -83px 0;
+    position: relative;
+    top: 9px;
+    left: 5px;
+}
+
+main.buy-page .buy-list tr.buy-item td {
+    border-bottom: 1px dotted #ddd;
+    padding: 15px 0 10px;
+    background: #fbfcff;
+    vertical-align: top;
+}
+
+main.buy-page .buy-list tr.buy-item .buy-item-name a {
+    color: #000;
+}
+
+main.buy-page .buy-list tr.buy-item .buy-item-image {
+    width: 55px;
+}
+
+main.buy-page .buy-list tr.buy-item .buy-item-image img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #E9E9E9;
+}
+
+main.buy-page .buy-item-price, main.buy-page .buy-item-num {
+    text-align: center;
+}
+
+main.buy-page .buy-item-sum {
+    text-align: right;
+    font-weight: bold;
+    color: #FF0036;
+    padding-right: 20px !important;
+}
+
+main.buy-page .sum-bar {
+    margin-top: 10px;
+    background: #f2f7ff;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+}
+
+main.buy-page .sum-bar td {
+    padding: 10px 20px 10px 10px;
+    border: 1px solid #fff;
+}
+
+main.buy-page .sum-bar .comment-td {
+    vertical-align: top;
+}
+
+main.buy-page .sum-bar .comment-input {
+    border: 1px solid #ccc;
+    line-height: 18px;
+    text-indent: 4px;
+    width: 328px;
+    vertical-align: top;
+    height: 22px;
+    resize: none;
+}
+
+main.buy-page .sum-bar .deliver-num {
+    color: #FF0036;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+main.buy-page .sum-bar .sum-num-td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main.buy-page .sum-bar .sum-num {
+    color: #FF0036;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+main.buy-page .confirm-frame {
+    border: 1px solid #ff0036;
+    min-width: 230px;
+    padding: 10px 23px 10px 20px;
+}
+
+main.buy-page .confirm-frame .line {
+    line-height: 30px;
+    font-weight: 700;
+}
+
+main.buy-page .confirm-frame .line .yen-big {
+    font-size: 26px;
+    color: #999;
+    font-style: normal;
+}
+
+main.buy-page .confirm-frame .line .price-num {
+    font-size: 26px;
+    color: #FF0036;
+}
+
+main.buy-page .confirm-frame .line-small {
+    line-height: 25px;
+}
+
+main.buy-page button {
+    display: inline-block;
+    width: 182px;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    background: #ff0036;
+    color: #fff;
+    border: none;
+    margin-bottom: 60px;
+}
+
+/*footer-top*/
+footer.footer-top {
+    width: 100%;
+    border-top: 1px solid #D1D7DC;
+}
+
+footer.footer-top .footer-content {
+    width: 1190px;
+    height: 290px;
+    margin: 0 auto;
+}
+
+footer.footer-top .footer-ensure {
+    background: url("../../img/ensure.jpg") no-repeat;
+    height: 100px;
+    width: 1190px;
+}
+
+footer.footer-top .footer-ensure a {
+    display: block;
+    width: 297px;
+    height: 100px;
+    float: left;
+}
+
+footer.footer-top .footer-desc {
+    border-top: 1px solid #ededed;
+    margin-top: 10px;
+    padding: 20px 0 0 10px;
+}
+
+footer.footer-top .desc-column {
+    width: 20%;
+    float: left;
+    padding: 0 0 0 50px;
+}
+
+footer.footer-top .desc-column .desc-column-title {
+    color: #646464;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+footer.footer-top .desc-column a {
+    display: block;
+    padding-top: 3px;
+}
+
+/*footer-bottom*/
+footer.footer-bottom {
+    width: 100%;
+}
+
+footer.footer-bottom .foot-image {
+    display: block;
+    width: 1190px; /*猫头在1190居中后再右移*/
+    height: 31px;
+    background: url("../../img/maotou.png") no-repeat 40px;
+    margin: 0 auto;
+}
+
+footer.footer-bottom .foot-content {
+    width: 100%;
+    border-top: 2px solid #FF0036; /*猫头下面画条全屏线*/
+    background: #000;
+}
+
+footer.footer-bottom .copyright {
+    width: 1190px;
+    margin: 0 auto;
+    color: white;
+    line-height: 35px; /*行内元素上下padding不生效，用line-height*/
+}
+
+footer.footer-bottom .copyright a {
+    padding: 3px;
+    color: white;
+}
+
+footer.footer-bottom .copyright .license {
+    color: #A4A4A4;
+    line-height: 25px;
+}
+
+footer.footer-bottom .copyright .license a {
+    padding: 15px;
+    color: #A4A4A4;
+}
+
+div.license .copy-right-year {
+    margin: 10px 0;
+    color: #686868;
+}
